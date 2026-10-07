@@ -196,27 +196,29 @@ details.earlier[open] summary { margin-bottom: 18px; }
 
   <section class="final" id="final" aria-labelledby="final-h">
     <div class="final-grid">
-      <video src="final/microduck_emotions_final_page.mp4?v=1" poster="final/thumbnail.jpg?v=1" controls playsinline preload="metadata"></video>
+      <video src="final/microduck_emotions_final_v2_page.mp4?v=1" poster="final/thumbnail.jpg?v=1" controls playsinline preload="metadata"></video>
       <div class="final-text">
-        <h2 id="final-h">Candidate final</h2>
+        <h2 id="final-h">Candidate final, v2</h2>
         <div class="status">
           <span class="chip hot">ready for your go · not published</span>
           <span class="chip">13 emotions</span><span class="chip">43.7 s</span><span class="chip">1080×1920</span>
-          <span class="chip">Carefree</span><span class="chip">−14 LUFS</span><span class="chip">41.6 MB</span>
+          <span class="chip">Carefree</span><span class="chip">−14 LUFS</span><span class="chip">41.3 MB</span>
         </div>
         <ul class="decisions">
-          <li><b>Order</b> Sad, curious, yes, no, defiant, impatient, angry, mock, mmh?, yes!, excited, devastated, play dead. Your frame, with four placed by me:</li>
+          <li><b>v2</b> No shadow of the robot on itself (its ground shadow stays), music from the first frame, and no before yes: I read "no and yes one after the other" as swapping them.</li>
+          <li><b>Order</b> Sad, curious, no, yes, defiant, impatient, angry, mock, mmh?, yes!, excited, devastated, play dead. Your frame, with four placed by me:</li>
           <li><b>Mock</b> right after angry: the teasing that follows the anger (laugh is out).</li>
           <li><b>Mmh?</b> later, as you asked: after mock, a puzzled pause before the joy.</li>
           <li><b>Yes!</b> before excited: a curt yes that tips into the excitement.</li>
           <li><b>Devastated</b> just before play dead: the crash, then the punchline.</li>
           <li><b>Scenes</b> Forest, night, studio, grid, summit, desk, grid, studio, forest, summit, beach, night, grid: no two neighbours share a scene, and play dead ends back on the simulator grid.</li>
-          <li><b>Music</b> Carefree comes in with curious at 5.4 s and dips under every quack.</li>
+          <li><b>Music</b> Carefree starts on the first frame and dips under every quack.</li>
           <li><b>Text</b> The k / 13 counter stays; the end card is gone (the dead duck is held 1.4 s).</li>
         </ul>
-        <h3>The image problems you saw, fixed</h3>
+        <h3>The image problems you saw</h3>
         <ul class="fixes">
-          <li><b>Blocky, blinking shadows (desk worst) and the stray beach shadow.</b> One bug: MuJoCo fixes the shadow area when the renderer is created, and the emotion code had briefly set the scene size to 141 m, so each shadow pixel was about 10 cm. The scene size is now set first; shadows are sharp and start at the feet.</li>
+          <li><b>v2: the shadow across the face.</b> Each frame is drawn with and without shadows, and the duck's own pixels come from the shadowless one, so it never shadows its own face or body; its shadow on the ground is kept. Re-rendered: sad, curious, no, yes, angry, mock, mmh?, excited. Kept as you liked them: defiant, the desk, yes!, the campfire, play dead.</li>
+          <li><b>v1: blocky, blinking shadows (desk worst) and the stray beach shadow.</b> One bug: MuJoCo fixes the shadow area when the renderer is created, and the emotion code had briefly set the scene size to 141 m, so each shadow pixel was about 10 cm. The scene size is now set first; shadows are sharp and start at the feet.</li>
           <li><b>Glittering specks at night.</b> The film grain was redrawn every frame; it is off, and every frame is rendered at 1.5× and scaled down so stars and edges stop crawling.</li>
           <li><b>Blockiness in dark scenes.</b> Each re-encode lost detail; the clips are now kept near-lossless until one final encode tuned for dark scenes.</li>
         </ul>
