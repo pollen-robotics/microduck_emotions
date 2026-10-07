@@ -96,7 +96,7 @@ def end_frames(last_png, out_mp4, seconds=END_HOLD):
     base = Image.open(last_png).convert("RGBA")
     card = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     shadowed(card, (W // 2, 560), "Microduck", ImageFont.truetype(FONT, 132, index=8), (255, 255, 255, 255))
-    shadowed(card, (W // 2, 670), "14 emotions", ImageFont.truetype(FONT, 62, index=2), (255, 255, 255, 235), blur=6)
+    shadowed(card, (W // 2, 670), f"{len(ORDER)} emotions", ImageFont.truetype(FONT, 62, index=2), (255, 255, 255, 235), blur=6)
     # labels only: any sentence on screen in a public post must be Rémi's own words (the socials repo's rule)
     frames = []
     for i in range(int(round(seconds * FPS))):
