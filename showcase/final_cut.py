@@ -38,7 +38,10 @@ CUT = [  # (emotion, preset): Rémi's frame (sad, curious, yes, no, defiant, imp
 ]
 # v2: clips Rémi called good in v1 are kept as rendered (renderer orbit_final-1, self-shadows and all); the others are
 # re-rendered without self-shadow on the robot (orbit_final-2)
-KEEP_V1 = {"defiant", "impatient", "yes_fast", "devastated", "play_dead"}
+KEEP_V1 = {"defiant", "impatient", "yes_fast", "devastated"}
+# v4: play dead's camera mirrored (Rémi): it swung to the duck's right and showed the back of the head as the beak opened
+# wide at 0.3 s; now 195 -> 265 deg, from front-left (the open beak three-quarters on) to the left side (legs up, face on)
+CAM_OVERRIDE = {"play_dead": dict(start=195, end=265)}
 RENDERER = "orbit_final-2"      # v3 = v2's clips, only the music mix changes
 TRACK = dict(file="Carefree.mp3", title="Carefree", credit=f'"Carefree" by {T.KM}',
              url="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Carefree.mp3")
@@ -88,6 +91,9 @@ def main():
     dry = "--dry" in sys.argv
     only = sys.argv[sys.argv.index("--only") + 1] if "--only" in sys.argv else None
     by_name = {o[0]: o for o in C.ORDER}
+    for e, cam in CAM_OVERRIDE.items():
+        n, a, b, _ = by_name[e]
+        by_name[e] = (n, a, b, cam)
     C.ORDER = [by_name[e] for e, _ in CUT]
     paths = C.camera_paths()                     # continuous across THIS order's cuts
     raw = out / "raw"
