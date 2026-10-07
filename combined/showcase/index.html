@@ -242,14 +242,14 @@ details.earlier[open] summary { margin-bottom: 18px; }
 
     <div class="repo">
       <h3 class="sub">Can people reuse it from the link?</h3>
-      <p><b>Yes for the emotions themselves, not for the whole pipeline.</b> Repo: <a href="https://github.com/RemiFabre/microduck_emotions" target="_blank" rel="noopener">RemiFabre/microduck_emotions</a> (public).</p>
+      <p><b>Yes for the emotions themselves, not for the whole pipeline.</b> Repo: <a href="https://github.com/pollen-robotics/microduck_emotions" target="_blank" rel="noopener">pollen-robotics/microduck_emotions</a> (public, moved from your account; the old link redirects).</p>
       <ul>
         <li>New: <code>export/</code> (3.9 MB) holds all 14 emotions as keyframe timelines and the robot's sounds, with a README on the format and on playing one on a Microduck or in any simulator. The repo README now opens on it.</li>
         <li><code>quack.py</code> makes new sounds in the duck's voice with only numpy and scipy.</li>
         <li>Still tied to your workspace: the simulation renderers (they import <code>duckfilm.py</code>, the robot model and the policies by absolute paths), and the robot code is only a patch file, since <code>pad-expressions</code> is not pushed.</li>
         <li>The repo is about 480 MB to clone, because of the review videos.</li>
       </ul>
-      <p><b>Done:</b> Apache-2.0 licence added; GitHub now shows it. The repo stays in your name until you tell me otherwise. <b>Still for you:</b> the duck's sudo password is in the public git history (removed from the current files), so change it on the duck.</p>
+      <p><b>Done:</b> Apache-2.0 licence added, and the repo moved to Pollen Robotics, public. <b>Flags:</b> the duck's sudo password is still in the git history (removed from the current files), so change it on the duck, or ask me to rewrite the history; 52 of the 88 commits carry your personal Gmail address.</p>
     </div>
   </section>
 
@@ -363,7 +363,7 @@ details.earlier[open] summary { margin-bottom: 18px; }
   </section>
 
   <footer>
-    <span>Rendered by <code>showcase/orbit.py</code> and <code>showcase/compile.py</code> in RemiFabre/microduck_emotions, 2026-10-01.</span>
+    <span>Rendered by <code>showcase/orbit.py</code> and <code>showcase/compile.py</code> in pollen-robotics/microduck_emotions, 2026-10-01.</span>
     <a href="http://localhost:7788/focus/e5450c24-4cef-49c7-bde8-4e5c7faa33ea" target="_blank" rel="noopener">Talk to the agent</a>
   </footer>
 </div>
@@ -532,9 +532,9 @@ for (const b of document.querySelectorAll(".stamp")) {
 <script>
 (() => {
   const HIS = "I did some early emotion and animation design for Microduck for the theater videos I've been doing, and I realized I didn't share how to reproduce them. So here it is. Contributions are very welcome!";
-  const LINK = "https://github.com/RemiFabre/microduck_emotions";
+  const LINK = "https://github.com/pollen-robotics/microduck_emotions";
   const FULL = 'Music: "Carefree" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/';
-  const SHORT = "Music: Carefree by Kevin MacLeod (CC BY 4.0)";
+  const SHORT = "Music: Carefree, Kevin MacLeod (CC BY 4.0)";
   const POSTS = [
     ["YouTube Shorts", "@LKama07", "Title: Microduck: early emotion design\n\n" + HIS + "\n\n" + LINK + "\n\n" + FULL, "title 31 / 100"],
     ["TikTok", "@remifabrerobot", HIS + "\n\n" + FULL, null],
