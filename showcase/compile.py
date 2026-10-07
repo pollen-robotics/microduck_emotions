@@ -44,6 +44,9 @@ ORDER = [
 ]
 SWING = (150.0, 210.0, 10.0)        # the pendulum between the explicit shots: bounds (deg) and speed (deg/s)
 END_HOLD = 2.6                      # the end card on the frozen last frame (s)
+END_TEXT = True                     # False: the last frame is simply held (no title, no dim)
+SEG_CRF = "14"                      # intermediate segments and master (near-lossless with "8")
+FINAL_X264 = ["-crf", "17", "-preset", "slow"]   # e.g. aq-mode 3 and a maxrate for dark scenes and size caps
 
 
 def camera_paths():
@@ -99,6 +102,13 @@ def end_frames(last_png, out_mp4, seconds=END_HOLD):
     shadowed(card, (W // 2, 670), f"{len(ORDER)} emotions", ImageFont.truetype(FONT, 62, index=2), (255, 255, 255, 235), blur=6)
     # labels only: any sentence on screen in a public post must be Rémi's own words (the socials repo's rule)
     frames = []
+    if not END_TEXT:
+        for i in range(int(round(seconds * FPS))):
+            frames.append(np.asarray(base.convert("RGB")))
+        import imageio
+        imageio.mimwrite(str(out_mp4), frames, fps=FPS, codec="libx264", pixelformat="yuv420p", macro_block_size=8,
+                         output_params=["-crf", SEG_CRF])
+        return
     for i in range(int(round(seconds * FPS))):
         u = min(1.0, i / (0.5 * FPS))
         e = 0.5 - 0.5 * math.cos(math.pi * u)
@@ -130,7 +140,7 @@ def assemble(raw, out):
         ff("-ss", f"{a:.3f}", "-t", f"{ln:.3f}", "-i", raw / f"{name}.mp4", "-loop", "1", "-t", f"{ln:.3f}", "-i", cap,
            "-filter_complex", "[1:v]format=rgba,fade=in:st=0:d=0.15:alpha=1[c];[0:v][c]overlay=0:0:shortest=1,format=yuv420p[v];"
            f"[0:a]aresample=48000,aformat=channel_layouts=stereo,afade=in:d=0.008,afade=out:st={ln - 0.012:.3f}:d=0.012[a]",
-           "-map", "[v]", "-map", "[a]", "-r", FPS, "-c:v", "libx264", "-crf", "14", "-preset", "medium", "-c:a", "pcm_s16le", dst)
+           "-map", "[v]", "-map", "[a]", "-r", FPS, "-c:v", "libx264", "-crf", SEG_CRF, "-preset", "medium", "-c:a", "pcm_s16le", dst)
         parts.append(dst)
     # the end card: the last frame of the last clip (without its caption), frozen, with the title fading in; silent
     last = seg / "last.png"
@@ -142,12 +152,12 @@ def assemble(raw, out):
     end_frames(last, endv)
     end = seg / f"{n + 1:02d}_end.mkv"
     ff("-i", endv, "-f", "lavfi", "-t", END_HOLD, "-i", "anullsrc=r=48000:cl=stereo", "-map", "0:v", "-map", "1:a",
-       "-c:v", "libx264", "-crf", "14", "-c:a", "pcm_s16le", "-shortest", end)
+       "-c:v", "libx264", "-crf", SEG_CRF, "-c:a", "pcm_s16le", "-shortest", end)
     parts.append(end)
     master = out / "master.mkv"
     ins = sum([["-i", p] for p in parts], [])
     fc = "".join(f"[{i}:v][{i}:a]" for i in range(len(parts))) + f"concat=n={len(parts)}:v=1:a=1[v][a]"
-    ff(*ins, "-filter_complex", fc, "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-crf", "14", "-c:a", "pcm_s16le", master)
+    ff(*ins, "-filter_complex", fc, "-map", "[v]", "-map", "[a]", "-c:v", "libx264", "-crf", SEG_CRF, "-c:a", "pcm_s16le", master)
     # loudness: two-pass loudnorm to -14 LUFS integrated, -1 dBTP
     r = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(master), "-af", "loudnorm=I=-14:TP=-1:LRA=11:print_format=json",
                         "-f", "null", "-"], capture_output=True, text=True)
@@ -155,7 +165,7 @@ def assemble(raw, out):
     ln_af = (f"loudnorm=I=-14:TP=-1:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:measured_LRA={m['input_lra']}"
              f":measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true,aresample=48000")
     final = out / "microduck_emotions_compilation.mp4"
-    ff("-i", master, "-af", ln_af, "-c:v", "libx264", "-profile:v", "high", "-crf", "17", "-preset", "slow", "-pix_fmt", "yuv420p",
+    ff("-i", master, "-af", ln_af, "-c:v", "libx264", "-profile:v", "high", *FINAL_X264, "-pix_fmt", "yuv420p",
        "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", final)
     web = out / "microduck_emotions_compilation_720.mp4"
     ff("-i", final, "-vf", "scale=720:1280:flags=lanczos", "-c:v", "libx264", "-profile:v", "high", "-crf", "24", "-maxrate", "2.4M",

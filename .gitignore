@@ -3,3 +3,4 @@ __pycache__/
 *.log.json
 combined/dropped/
 .DS_Store
+MUJOCO_LOG.TXT

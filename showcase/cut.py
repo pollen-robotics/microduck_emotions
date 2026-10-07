@@ -10,7 +10,9 @@ Life_of_Riley | Wallpaper | none), note.
 Clips come from mujoco-scenes-df's per-scene cache (~/Videos/agentic_socials/emotions_backgrounds_2026-10/cache,
 rendered by ~/mujoco_scenes/projects/emotions_bg/orbit_bg.py with the compilation's original camera path per emotion);
 a missing (scene, emotion) pair is rendered there, one MuJoCo process at a time (about 2.5 GB, a minute each).
-"original" = the slate showcase clip (combined/showcase/clips). Then compile.assemble (captions k / n, end card) and the
+"original" = the slate showcase clip (combined/showcase/clips). Caveat (mujoco-scenes-df): cached clips keep the camera
+path of the ORIGINAL order, so under a new order the orbit's swing can jump at a cut (most visible between two long
+clips); if Rémi notices, re-render those emotions with the new order's paths (a new cache key). Then compile.assemble (captions k / n, end card) and the
 music bed of tryout.py (enters with the second emotion, ducked under the quacks, -14 LUFS). --dry lists what it would do.
 """
 import json, os, shutil, subprocess, sys, time

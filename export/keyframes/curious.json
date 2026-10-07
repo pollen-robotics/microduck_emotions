@@ -1,0 +1,362 @@
+{
+ "keyframes": [
+  {
+   "t": 0.0,
+   "neck": -0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 0.1,
+   "neck": -0.117,
+   "head_pitch": -0.051,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 0.2,
+   "neck": -0.4,
+   "head_pitch": -0.175,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 0.3,
+   "neck": -0.683,
+   "head_pitch": -0.299,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 0.4,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 0.5,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": 0.066,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 0.6,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": 0.214,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 0.7,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": 0.333,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 0.8,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": 0.35,
+   "body_pitch": 0.0,
+   "mouth": 1.0,
+   "skill": null
+  },
+  {
+   "t": 0.9,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": 0.35,
+   "body_pitch": 0.0,
+   "mouth": 0.03,
+   "skill": null
+  },
+  {
+   "t": 1.0,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": 0.35,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 1.1,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": 0.201,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 1.2,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": -0.133,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 1.3,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": -0.401,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 1.4,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": -0.44,
+   "body_pitch": 0.0,
+   "mouth": 1.0,
+   "skill": null
+  },
+  {
+   "t": 1.5,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": -0.44,
+   "body_pitch": 0.0,
+   "mouth": 0.059,
+   "skill": null
+  },
+  {
+   "t": 1.6,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": -0.44,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 1.7,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": -0.44,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 1.8,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": -0.44,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 1.9,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": -0.44,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 2.0,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": -0.44,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 2.1,
+   "neck": -0.8,
+   "head_pitch": -0.35,
+   "head_yaw": 0.0,
+   "head_roll": -0.44,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 2.2,
+   "neck": -0.724,
+   "head_pitch": -0.317,
+   "head_yaw": 0.0,
+   "head_roll": -0.398,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 2.3,
+   "neck": -0.524,
+   "head_pitch": -0.229,
+   "head_yaw": 0.0,
+   "head_roll": -0.288,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 2.4,
+   "neck": -0.276,
+   "head_pitch": -0.121,
+   "head_yaw": 0.0,
+   "head_roll": -0.152,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 2.5,
+   "neck": -0.076,
+   "head_pitch": -0.033,
+   "head_yaw": 0.0,
+   "head_roll": -0.042,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 2.6,
+   "neck": -0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.0,
+   "head_roll": -0.0,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 2.7,
+   "neck": -0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.0,
+   "head_roll": -0.0,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 2.8,
+   "neck": -0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.0,
+   "head_roll": -0.0,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  },
+  {
+   "t": 2.9,
+   "neck": -0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.0,
+   "head_roll": -0.0,
+   "body_pitch": 0.0,
+   "mouth": 0.0,
+   "skill": null
+  }
+ ],
+ "measured": {
+  "motion": "curious_two_tilts_r35_leftboost",
+  "sound": "Q3_up2",
+  "wav": "/Users/remi/microduck/notes/emotions/sounds/curious/curious_two_tilts_r35_leftboost__Q3_up2.wav",
+  "desc": "the chirp pair with the second chirp 2 semitones higher (a question lift)",
+  "motion_desc": "right tilt 0.35, left tilt asks the full range (-0.44) because the left side tracks weaker",
+  "duration_s": 3.0,
+  "fell": false,
+  "fell_at": null,
+  "roll_joint_at_tilts": [
+   0.425,
+   -0.353
+  ],
+  "roll_joint_max_abs": 0.425,
+  "roll_joint_max_abs_deg": 24.4,
+  "neck_joint_min": -0.556,
+  "head_pitch_joint_min": -0.412,
+  "yaw_joint_max": -0.108,
+  "beak_forward_cm": 1.6,
+  "beak_dz_cm": 0.8,
+  "jaw_max_at_quacks": [
+   0.91,
+   0.94
+  ],
+  "jaw_max_between_quacks": 0.0,
+  "jaw_open_ticks": 15,
+  "beats": {
+   "forward": [
+    0.0,
+    0.4
+   ],
+   "tilt": [
+    [
+     0.4,
+     0.75,
+     0.35
+    ],
+    [
+     1.0,
+     1.35,
+     -0.44
+    ]
+   ],
+   "hold_end": 2.1,
+   "back": [
+    2.1,
+    2.6
+   ],
+   "total": 3.0,
+   "yaw": 0.0,
+   "quacks": [
+    0.6,
+    1.2
+   ],
+   "desc": "right tilt 0.35, left tilt asks the full range (-0.44) because the left side tracks weaker"
+  }
+ },
+ "fps": 30
+}

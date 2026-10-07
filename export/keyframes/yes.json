@@ -1,0 +1,322 @@
+{
+ "keyframes": [
+  {
+   "t": 0.0,
+   "neck": 0.0,
+   "head_pitch": 0.0,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 0.1,
+   "neck": 0.0,
+   "head_pitch": 0.067,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 0.2,
+   "neck": 0.0,
+   "head_pitch": 0.458,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 0.3,
+   "neck": 0.0,
+   "head_pitch": 0.7,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 0.4,
+   "neck": 0.0,
+   "head_pitch": 0.7,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 0.5,
+   "neck": 0.0,
+   "head_pitch": 0.568,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 0.6,
+   "neck": 0.0,
+   "head_pitch": 0.272,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.819
+  },
+  {
+   "t": 0.7,
+   "neck": 0.0,
+   "head_pitch": 0.035,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 1.0
+  },
+  {
+   "t": 0.8,
+   "neck": 0.0,
+   "head_pitch": 0.0,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.638
+  },
+  {
+   "t": 0.9,
+   "neck": 0.0,
+   "head_pitch": 0.0,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.214
+  },
+  {
+   "t": 1.0,
+   "neck": 0.0,
+   "head_pitch": 0.0,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 1.1,
+   "neck": 0.0,
+   "head_pitch": 0.0,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 1.2,
+   "neck": 0.0,
+   "head_pitch": 0.0,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 1.3,
+   "neck": 0.0,
+   "head_pitch": 0.0,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 1.4,
+   "neck": 0.0,
+   "head_pitch": 0.0,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  }
+ ],
+ "measured": {
+  "motion": "yes_single",
+  "motion_desc": "one nod: head_pitch 0 -> +0.7 over 0.25 s from t = 0.05, hold 0.1 s, back over 0.35 s (command level by 0.75 s, joint by ~1.1 s)",
+  "sound": "Y2_synth_fall",
+  "sound_desc": "one synth quack falling 3 semitones over 0.3 s: an assertive, settled 'yes'",
+  "wav": "/Users/remi/microduck/notes/emotions/sounds/yes/yes_single__Y2_synth_fall.wav",
+  "mouth_mode": "wav",
+  "duration_s": 1.5,
+  "fell": false,
+  "fell_at": null,
+  "drift_cm": 0.1,
+  "neck_min": -0.192,
+  "head_pitch_min": 0.084,
+  "head_pitch_max": 0.672,
+  "head_yaw_absmax": 0.053,
+  "head_roll_absmax": 0.035,
+  "trunk_pitch_min": -0.6,
+  "trunk_pitch_max": 0.3,
+  "trunk_z_min": 0.116,
+  "trunk_z_end": 0.116,
+  "gz_end": -1.0,
+  "jaw_at_quacks": [
+   0.99
+  ],
+  "jaw_between": 0.21,
+  "nets": [
+   "stand"
+  ],
+  "beats": [
+   [
+    0.3,
+    "cmd down"
+   ],
+   [
+    0.45,
+    "quack / bottom"
+   ],
+   [
+    0.75,
+    "cmd level"
+   ],
+   [
+    1.1,
+    "joint level"
+   ]
+  ]
+ },
+ "fps": 30
+}

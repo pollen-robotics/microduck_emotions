@@ -1,5 +1,19 @@
 # microduck_emotions
 
+## Reuse the emotions
+
+The 14 shipped emotions are in [`export/`](export/): for each one, the motion as a keyframes timeline (JSON, a
+sample every 0.1 s) and the sound the robot plays (wav), indexed in `export/emotions.json`.
+[`export/README.md`](export/README.md) explains the format and how to play an emotion on a Microduck or in any
+simulator, and needs nothing else from this repo. Preview videos: `combined/showcase/clips/`. `quack.py` (numpy and
+scipy) makes new sounds in the robot's voice, and `runtime-pad-expressions.patch` is the robot side, for
+[pollen-robotics/microduck](https://github.com/pollen-robotics/microduck).
+The simulation renderers (`motion/`, `showcase/`, the `sounds/make_*.py` generators) still need the author's
+Microduck workspace: they import `duckfilm.py` (not in this repo), the robot model from `microduck_rl` and the
+policies from `microduck` through absolute paths.
+
+The rest of this README is the working log of the design.
+
 Body language and quack sounds for Microduck, designed so that Reachy Mini and Microduck can act emotional scenes
 together. Working copy: `/Users/remi/microduck/notes/emotions/` (this repo). Started 2026-09-04.
 

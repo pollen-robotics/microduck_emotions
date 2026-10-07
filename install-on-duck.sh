@@ -3,7 +3,7 @@
 # ~/duck-sideload/ on the robot PLUS every emotion sound folder (sounds/robot/<tag>_*.wav ->
 # /var/lib/robot/sounds/<tag>/). One sudo password prompt.
 #
-#   /Users/remi/microduck/notes/emotions/install-on-duck.sh [microduck@192.168.1.29]
+#   ./install-on-duck.sh [user@duck-host]
 #
 # What it does on the robot (same swap as notes/reachy-encounter/ship-to-duck.sh, step 3):
 #   - stops padd and robotd
@@ -17,7 +17,7 @@
 # Undo: /Users/remi/microduck/notes/reachy-encounter/unship-from-duck.sh (the sound folder is
 # harmless to leave in place).
 set -euo pipefail
-BOARD="${1:-microduck@192.168.1.29}"
+BOARD="${1:-microduck@microduck.local}"
 BINS="robotd padd robotctl btd"
 
 # Re-copy the staged files in case the robot's copy is stale (cheap).
@@ -27,7 +27,7 @@ ssh "$BOARD" 'mkdir -p ~/duck-sideload/sounds'
 scp -q $(for b in $BINS; do printf '%s ' "$OUT/$b"; done) "$BOARD:duck-sideload/"
 scp -q "$WAVS"/*.wav "$BOARD:duck-sideload/sounds/"
 
-# DUCK_SUDO_PASS=... makes the swap non-interactive (the password is `microduck`, see the agent memory).
+# DUCK_SUDO_PASS=... makes the swap non-interactive (the robot's sudo password; never write it in this file).
 SUDO='sudo'
 [ -n "${DUCK_SUDO_PASS:-}" ] && SUDO="echo '$DUCK_SUDO_PASS' | sudo -S"
 ssh -t "$BOARD" 'set -e

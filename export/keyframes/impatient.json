@@ -1,0 +1,532 @@
+{
+ "keyframes": [
+  {
+   "t": 0.0,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 0.1,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 0.2,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.138,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 0.3,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.362,
+   "head_roll": 0.0,
+   "body_pitch": 0.06,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 0.4,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.37,
+   "head_roll": 0.0,
+   "body_pitch": 0.068,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 0.5,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.153,
+   "head_roll": 0.0,
+   "body_pitch": 0.012,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 0.6,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": -0.153,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 1.0
+  },
+  {
+   "t": 0.7,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": -0.37,
+   "head_roll": 0.0,
+   "body_pitch": 0.06,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.261
+  },
+  {
+   "t": 0.8,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": -0.37,
+   "head_roll": 0.0,
+   "body_pitch": 0.068,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 0.9,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": -0.153,
+   "head_roll": 0.0,
+   "body_pitch": 0.012,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 1.0,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.153,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 1.0
+  },
+  {
+   "t": 1.1,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.37,
+   "head_roll": 0.0,
+   "body_pitch": 0.06,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.279
+  },
+  {
+   "t": 1.2,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.37,
+   "head_roll": 0.0,
+   "body_pitch": 0.068,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 1.3,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": 0.153,
+   "head_roll": 0.0,
+   "body_pitch": 0.012,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 1.4,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": -0.153,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 1.0
+  },
+  {
+   "t": 1.5,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": -0.37,
+   "head_roll": 0.0,
+   "body_pitch": 0.06,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.293
+  },
+  {
+   "t": 1.6,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": -0.362,
+   "head_roll": 0.0,
+   "body_pitch": 0.068,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 1.7,
+   "neck": 0.0,
+   "head_pitch": -0.0,
+   "head_yaw": -0.138,
+   "head_roll": 0.0,
+   "body_pitch": 0.012,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 1.8,
+   "neck": 0.0,
+   "head_pitch": -0.175,
+   "head_yaw": -0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 1.0
+  },
+  {
+   "t": 1.9,
+   "neck": 0.0,
+   "head_pitch": -0.7,
+   "head_yaw": -0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.303
+  },
+  {
+   "t": 2.0,
+   "neck": 0.0,
+   "head_pitch": -0.7,
+   "head_yaw": -0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  },
+  {
+   "t": 2.1,
+   "neck": 0.0,
+   "head_pitch": -0.7,
+   "head_yaw": -0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.836
+  },
+  {
+   "t": 2.2,
+   "neck": 0.0,
+   "head_pitch": -0.673,
+   "head_yaw": -0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 1.0
+  },
+  {
+   "t": 2.3,
+   "neck": 0.0,
+   "head_pitch": -0.484,
+   "head_yaw": -0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.619
+  },
+  {
+   "t": 2.4,
+   "neck": 0.0,
+   "head_pitch": -0.216,
+   "head_yaw": -0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.206
+  },
+  {
+   "t": 2.5,
+   "neck": 0.0,
+   "head_pitch": -0.027,
+   "head_yaw": -0.0,
+   "head_roll": 0.0,
+   "body_pitch": 0.0,
+   "body_z": 0.0,
+   "twist": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "skill": null,
+   "soften": false,
+   "relax": false,
+   "mouth": 0.0
+  }
+ ],
+ "measured": {
+  "motion": "impatient",
+  "motion_desc": "four quick yaw shakes +-0.4 (0.4 s apart) with a body bob on each and a grumble per shake, then the beak flicks up (-0.7) on a huff; level by 2.5 s",
+  "sound": "I1_grumbles_huff",
+  "sound_desc": "four short nasal grumbles stepping down, then a rising-falling huff on the beak flick",
+  "wav": "/Users/remi/microduck/notes/emotions/sounds/impatient/impatient__I1_grumbles_huff.wav",
+  "mouth_mode": "wav",
+  "duration_s": 2.6,
+  "fell": false,
+  "fell_at": null,
+  "drift_cm": 0.2,
+  "neck_min": -0.39,
+  "head_pitch_min": -0.628,
+  "head_pitch_max": 0.312,
+  "head_yaw_absmax": 0.402,
+  "head_roll_absmax": 0.048,
+  "trunk_pitch_min": -1.6,
+  "trunk_pitch_max": 0.7,
+  "trunk_z_min": 0.109,
+  "trunk_z_end": 0.115,
+  "gz_end": -1.0,
+  "jaw_at_quacks": [
+   0.92,
+   0.95,
+   0.95,
+   0.95,
+   0.98
+  ],
+  "jaw_between": 0.2,
+  "nets": [
+   "stand"
+  ],
+  "beats": [
+   [
+    0.4,
+    "grumble 1"
+   ],
+   [
+    0.8,
+    "grumble 2"
+   ],
+   [
+    1.2,
+    "grumble 3"
+   ],
+   [
+    1.6,
+    "grumble 4"
+   ],
+   [
+    1.95,
+    "huff, beak up"
+   ],
+   [
+    2.5,
+    "back"
+   ]
+  ]
+ },
+ "fps": 30
+}
