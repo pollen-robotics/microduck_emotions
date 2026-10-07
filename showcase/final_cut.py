@@ -39,11 +39,48 @@ CUT = [  # (emotion, preset): Rémi's frame (sad, curious, yes, no, defiant, imp
 # v2: clips Rémi called good in v1 are kept as rendered (renderer orbit_final-1, self-shadows and all); the others are
 # re-rendered without self-shadow on the robot (orbit_final-2)
 KEEP_V1 = {"defiant", "impatient", "yes_fast", "devastated", "play_dead"}
-RENDERER = "orbit_final-2"
+RENDERER = "orbit_final-2"      # v3 = v2's clips, only the music mix changes
 TRACK = dict(file="Carefree.mp3", title="Carefree", credit=f'"Carefree" by {T.KM}',
              url="https://incompetech.com/music/royalty-free/mp3-royaltyfree/Carefree.mp3")
-MUSIC_DB = -22.0
+MUSIC_DB = -21.0                 # v3: a touch louder
 SOFT = os.environ.get("SHOWCASE_SOFT", "")
+
+
+DUCK = dict(threshold=0.1, ratio=2, attack=20, release=300)     # v3: light, about 3 dB under a quack (tryout.py: 0.015 / 8 / 8 / 280)
+
+
+def add_music(src, track, music_db, start, offset, out, duck=DUCK, bed_only=None):
+    """tryout.add_music with a gentler sidechain: the music dips a few dB under each quack instead of vanishing (v2's
+    deep ducking hid the music under sad's opening coo for 3 s, which sounded like a late start). bed_only: also write
+    the ducked music alone, for checking."""
+    import re
+    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(src)],
+                               capture_output=True, text=True).stdout)
+    length = dur - start
+    m = T.loudness(T.MUSIC / track["file"], af=f"atrim=start={offset}:duration={length}")
+    gain = music_db - float(m["input_i"])
+    ms = int(round(start * 1000))
+    sc = f"sidechaincompress=threshold={duck['threshold']}:ratio={duck['ratio']}:attack={duck['attack']}:release={duck['release']}:makeup=1"
+    fc = (f"[1:a]atrim=start={offset}:duration={length:.3f},asetpts=PTS-STARTPTS,aresample=48000,"
+          f"aformat=channel_layouts=stereo,volume={gain:.2f}dB,afade=t=in:st=0:d=0.15,"
+          f"afade=t=out:st={max(0.0, length - 2.4):.3f}:d=2.4,adelay={ms}|{ms},apad=whole_dur={dur:.3f}[m];"
+          f"[0:a]aresample=48000,aformat=channel_layouts=stereo,asplit=2[q][qs];"
+          f"[m][qs]{sc}[md];[md]asplit=2[md1][md2];"
+          f"[q][md1]amix=inputs=2:normalize=0:duration=first[a]")
+    mix = out.with_suffix(".mix.mkv")
+    args = ["-i", src, "-i", T.MUSIC / track["file"], "-filter_complex", fc, "-map", "0:v", "-map", "[a]",
+            "-c:v", "copy", "-c:a", "pcm_s16le", mix]
+    if bed_only:
+        args += ["-map", "[md2]", "-c:a", "pcm_s16le", str(bed_only)]
+    else:
+        args[args.index("-filter_complex") + 1] = fc.replace(";[md]asplit=2[md1][md2]", "").replace("[md1]", "[md]")
+    T.ff(*args)
+    L = T.loudness(mix)
+    af = (f"loudnorm=I=-14:TP=-1:LRA=11:measured_I={L['input_i']}:measured_TP={L['input_tp']}:measured_LRA={L['input_lra']}"
+          f":measured_thresh={L['input_thresh']}:offset={L['target_offset']}:linear=true,aresample=48000")
+    T.ff("-i", mix, "-af", af, "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-movflags", "+faststart", out)
+    mix.unlink()
+    return out, None, gain
 
 
 def main():
@@ -85,7 +122,7 @@ def main():
     final, _ = C.assemble(raw, out)
     start = 0.0                                   # v2: the music starts on the first frame (Rémi)
     dst = out / "microduck_emotions_final.mp4"
-    dst, web, gain = T.add_music(final, TRACK, MUSIC_DB, start, 0.0, dst)
+    dst, web, gain = add_music(final, TRACK, MUSIC_DB, start, 0.0, dst, bed_only=out / "music_bed_ducked.wav")
     web2 = out / "microduck_emotions_final_page.mp4"     # the page copy, kinder to dark scenes than tryout's CRF 24
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(dst), "-vf", "scale=720:1280:flags=lanczos", "-c:v", "libx264",
                     "-profile:v", "high", "-crf", "19", "-preset", "slow", "-tune", "film", "-x264-params", "aq-mode=3",
