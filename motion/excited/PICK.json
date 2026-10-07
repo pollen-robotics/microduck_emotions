@@ -1,9 +1,0 @@
-{
- "motion": "excited_wag_pump",
- "sound": "X2_bank_chirps_up",
- "wav": "sounds/excited/excited_wag_pump__X2_bank_chirps_up.wav",
- "duration": 3.4,
- "keyframes_json": "motion/excited/excited_wag_pump__X2_bank_chirps_up.json",
- "robot_wav": "sounds/robot/excited_a.wav",
- "why": "the liveliest and the most stable: six accelerating head swings +-0.6 with a body bob on each (12-16 mm dips), the beak climbing from -0.15 to -0.7, a bow flourish at the end; trunk drift 0.6 cm, trunk pitch within +-3 deg, no fall. The bank's own chirps in rising pitch order (the duck's real voice, R\u00e9mi picked the bank chirps for curious too); X1 synth climb is the runner-up sound, excited_hops the runner-up motion."
-}

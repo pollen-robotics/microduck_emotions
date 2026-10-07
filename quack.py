@@ -1,4 +1,4 @@
-"""Python port of the robot's voice synth (`/Users/remi/microduck/microduck/sounds`), for designing
+"""Python port of the robot's voice synth (`sounds/` in pollen-robotics/microduck), for designing
 emotion sounds on the Mac with the SAME duck identity as the robot.
 
 The personality traits (pitch centre, timbre, quackiness...) are derived with an exact port of the

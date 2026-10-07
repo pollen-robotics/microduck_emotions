@@ -1,0 +1,248 @@
+{
+ "about": "The 14 Microduck emotions: a keyframes timeline and the robot's sound for each. Format in README.md.",
+ "keyframe_step_s": 0.1,
+ "emotion_mode": "Robot build only: tap D-pad Up to enter emotion mode. A short press is under 0.6 s; a long press fires once held 0.6 s.",
+ "emotions": [
+  {
+   "name": "sad",
+   "button": "A",
+   "press": "short",
+   "duration_s": 7.5,
+   "description": "Standing, the head droops while a low coo glides down with it, two slow silent head shakes, then back up.",
+   "keyframes": "keyframes/sad.json",
+   "sounds": [
+    "sounds/sad.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/sad.mp4",
+   "robot_note": "Half depth on purpose: a deeper droop moves the head's mass forward and the real duck steps forward to stay up."
+  },
+  {
+   "name": "devastated",
+   "button": "A",
+   "press": "long",
+   "duration_s": 8.5,
+   "description": "Sits down at once with an alarmed call, the head droops and shakes three times on three sobs, then comes back level. It stays seated.",
+   "keyframes": "keyframes/devastated.json",
+   "sounds": [
+    "sounds/devastated.wav"
+   ],
+   "sound_at_s": 0.3,
+   "video": "previews/devastated.mp4",
+   "robot_note": "This keyframe file starts 0.3 s before the press: the sit and the wav start at t = 0.3 s. The robot build drops that lead-in. Stand it up again with the sit toggle (D-pad Down)."
+  },
+  {
+   "name": "curious",
+   "button": "Y",
+   "press": "long",
+   "duration_s": 3.0,
+   "description": "'What? what?': the head comes forward and tilts one way, then the other, on two rising chirps.",
+   "keyframes": "keyframes/curious.json",
+   "sounds": [
+    "sounds/curious.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/curious.mp4",
+   "robot_note": "The robot build keeps only the two tilts (head_roll). The head-forward part (neck -0.8, head_pitch -0.35) made the real duck step forward, so set neck and head_pitch to 0 on a real Microduck."
+  },
+  {
+   "name": "mmh",
+   "button": "Y",
+   "press": "short",
+   "duration_s": 2.0,
+   "description": "'What do you mean?': a small head tilt held for a second with a muffled rising 'mmh?'.",
+   "keyframes": "keyframes/mmh.json",
+   "sounds": [
+    "sounds/mmh.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/mmh.mp4"
+  },
+  {
+   "name": "yes",
+   "button": "LB",
+   "press": "short",
+   "duration_s": 1.5,
+   "description": "One clear nod with one quack that falls three semitones.",
+   "keyframes": "keyframes/yes.json",
+   "sounds": [
+    "sounds/yes.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/yes.mp4"
+  },
+  {
+   "name": "yes_fast",
+   "button": "LB",
+   "press": "long",
+   "duration_s": 1.5,
+   "description": "The same nod with a curt 'wak'.",
+   "keyframes": "keyframes/yes_fast.json",
+   "sounds": [
+    "sounds/yes_fast.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/yes_fast.mp4"
+  },
+  {
+   "name": "no",
+   "button": "RB",
+   "press": "short",
+   "duration_s": 1.8,
+   "description": "One head shake with a two-note 'no-ah'. Three voicings: pick one at random.",
+   "keyframes": "keyframes/no.json",
+   "sounds": [
+    "sounds/no_a.wav",
+    "sounds/no_b.wav",
+    "sounds/no_c.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/no.mp4"
+  },
+  {
+   "name": "defiant",
+   "button": "RB",
+   "press": "long",
+   "duration_s": 2.2,
+   "description": "'Says who?': beak up to its left with a curt quack, then up to its right with a second one.",
+   "keyframes": "keyframes/defiant.json",
+   "sounds": [
+    "sounds/defiant.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/defiant.mp4"
+  },
+  {
+   "name": "angry",
+   "button": "X",
+   "press": "short",
+   "duration_s": 2.6,
+   "description": "Beak-up glare, then four head snaps with a hard bark on each and a small body pulse. Two voicings.",
+   "keyframes": "keyframes/angry.json",
+   "sounds": [
+    "sounds/angry_a.wav",
+    "sounds/angry_b.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/angry.mp4",
+   "robot_note": "The beak opens wide on the first bark (mouth 1.0 from 0.3 to 0.7 s) so a leash held in the beak drops."
+  },
+  {
+   "name": "mock",
+   "button": "X",
+   "press": "long",
+   "duration_s": 2.6,
+   "description": "'Gnagnagnagna': beak up, the head rolling side to side on a staccato mocking run.",
+   "keyframes": "keyframes/mock.json",
+   "sounds": [
+    "sounds/mock.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/mock.mp4"
+  },
+  {
+   "name": "excited",
+   "button": "B",
+   "press": "short",
+   "duration_s": 3.4,
+   "description": "Six faster and faster head swings with a body bob on each, and a run of quacks climbing in pitch.",
+   "keyframes": "keyframes/excited.json",
+   "sounds": [
+    "sounds/excited.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/excited.mp4"
+  },
+  {
+   "name": "impatient",
+   "button": "B",
+   "press": "long",
+   "duration_s": 2.6,
+   "description": "'Come on!': four quick head shakes with a body bob each, then the beak flicks up on a huff.",
+   "keyframes": "keyframes/impatient.json",
+   "sounds": [
+    "sounds/impatient.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/impatient.mp4"
+  },
+  {
+   "name": "laugh",
+   "button": "L3",
+   "press": "short",
+   "duration_s": 3.0,
+   "description": "Beak up, the head wagging with a body dip on every 'ha': one long 'haaa', then seven short ones dying out.",
+   "keyframes": "keyframes/laugh.json",
+   "sounds": [
+    "sounds/laugh.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/laugh.mp4"
+  },
+  {
+   "name": "play_dead",
+   "button": "L3",
+   "press": "long",
+   "duration_s": 7.5,
+   "description": "Alarm call while the head whips to the side and the duck sits, then it goes limp, rolls onto its back and lifts its legs, with a dying quack. Needs a mat.",
+   "keyframes": "keyframes/play_dead.json",
+   "sounds": [
+    "sounds/play_dead.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/play_dead.mp4",
+   "robot_note": "The keyframes carry the sit, the head and the beak. The dead pose itself is two timed joint poses, given in pose_joints. The robot holds that pose until Start. The simulation video used 1.4 s and 3.6 s; the robot uses 1.8 s and 4.0 s, because straight legs on a duck that has not finished sitting topple it forward.",
+   "pose_joints": {
+    "note": "Absolute joint angles in radians (not deltas). Joints in torque_off hang free; the joints listed in targets ramp linearly from where they are over ramp_s at servo P gain `gain` (160 = the standing value) and hold; the others hold. The balance policy is off from the first stage on.",
+    "stages": [
+     {
+      "at_s": 1.8,
+      "torque_off": [
+       "neck_pitch",
+       "head_pitch",
+       "head_yaw"
+      ],
+      "targets": {
+       "left_hip_yaw": 0.0,
+       "left_hip_roll": 0.0,
+       "left_hip_pitch": 0.0,
+       "left_knee": 0.0,
+       "left_ankle": 0.0,
+       "right_hip_yaw": 0.0,
+       "right_hip_roll": 0.0,
+       "right_hip_pitch": 0.0,
+       "right_knee": 0.0,
+       "right_ankle": 0.0
+      },
+      "ramp_s": 1.5,
+      "gain": 160,
+      "what": "legs straight: the seated duck rolls flat onto its back"
+     },
+     {
+      "at_s": 4.0,
+      "torque_off": [
+       "neck_pitch",
+       "head_pitch",
+       "head_yaw"
+      ],
+      "targets": {
+       "left_hip_yaw": 0.0,
+       "left_hip_roll": 0.0,
+       "left_hip_pitch": -1.0,
+       "left_knee": 1.5,
+       "left_ankle": 0.0,
+       "right_hip_yaw": 0.0,
+       "right_hip_roll": 0.0,
+       "right_hip_pitch": 1.0,
+       "right_knee": -1.5,
+       "right_ankle": 0.0
+      },
+      "ramp_s": 1.0,
+      "gain": 160,
+      "what": "the legs come up"
+     }
+    ]
+   }
+  }
+ ]
+}

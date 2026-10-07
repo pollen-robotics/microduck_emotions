@@ -1,9 +1,0 @@
-{
- "motion": "yes_single",
- "sound": "Y2_synth_fall",
- "wav": "/Users/remi/microduck/notes/emotions/sounds/yes/yes_single__Y2_synth_fall.wav",
- "duration": 1.5,
- "keyframes_json": "/Users/remi/microduck/notes/emotions/motion/yes/yes_single__Y2_synth_fall.json",
- "robot_wav": "/Users/remi/microduck/notes/emotions/sounds/robot/yes_a.wav",
- "mouth_mode": "wav"
-}

@@ -1,9 +1,0 @@
-{
- "motion": "closed_grumble",
- "sound": "C2_grumble",
- "wav": "/Users/remi/microduck/notes/emotions/sounds/closed/closed_grumble__C2_grumble.wav",
- "duration": 2.2,
- "keyframes_json": "/Users/remi/microduck/notes/emotions/motion/closed/closed_grumble__C2_grumble.json",
- "robot_wav": "/Users/remi/microduck/notes/emotions/sounds/robot/closed_a.wav",
- "mouth_mode": "closed"
-}

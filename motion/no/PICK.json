@@ -1,9 +1,0 @@
-{
- "motion": "no_one",
- "sound": "N2_synth_m5",
- "wav": "/Users/remi/microduck/notes/emotions/sounds/no/no_one__N2_synth_m5.wav",
- "duration": 1.8,
- "keyframes_json": "/Users/remi/microduck/notes/emotions/motion/no/no_one__N2_synth_m5.json",
- "robot_wav": "/Users/remi/microduck/notes/emotions/sounds/robot/no_a.wav",
- "mouth_mode": "wav"
-}
