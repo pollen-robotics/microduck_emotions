@@ -1,5 +1,7 @@
 # microduck_emotions
 
+An early prototype of emotional design for Microduck: 14 emotions, each a motion and a sound designed together.
+
 ## Reuse the emotions
 
 The 14 shipped emotions are in [`export/`](export/): for each one, the motion as a keyframes timeline (JSON, a
