@@ -150,23 +150,108 @@ footer code { font-family: var(--mono); font-size: 0.8rem; }
   .grip { display: none; }
   .keep { grid-column: 3 / 5; }
 }
+
+.final { display: flex; flex-direction: column; gap: 30px; }
+.final-grid { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: clamp(20px, 4vw, 44px); align-items: start; }
+.final-grid video { width: 100%; max-width: 100%; aspect-ratio: 9 / 16; display: block; background: #000; border-radius: 12px; }
+.final-text { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.final-text h3, h3.sub { font: 800 1.15rem/1.2 var(--display); }
+.decisions, .fixes { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 6px; color: var(--muted); font-size: 0.93rem; }
+.decisions b, .fixes b { color: var(--ink); font-weight: 600; margin-right: 4px; }
+.thumbwrap { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 18px; align-items: center; }
+.thumbimg { width: 160px; max-width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 10px; display: block; }
+.posts { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; margin-top: 12px; }
+.post { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.post header { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-direction: row; max-width: none; }
+.post strong { font: 800 1rem/1.2 var(--display); }
+.post .count { font: 400 0.72rem/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.post pre { margin: 0; white-space: pre-wrap; word-break: break-word; font: 400 0.86rem/1.45 var(--body); color: var(--ink); }
+.post .acct { font: 400 0.75rem/1.3 var(--mono); color: var(--muted); }
+.repo { display: flex; flex-direction: column; gap: 8px; max-width: 46rem; }
+.repo p, .repo li { color: var(--muted); font-size: 0.93rem; }
+.repo ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 4px; }
+details.earlier summary { cursor: pointer; font: 800 1.2rem/1.2 var(--display); color: var(--ink); }
+details.earlier[open] summary { margin-bottom: 18px; }
+@media (max-width: 760px) {
+  .final-grid { grid-template-columns: minmax(0, 1fr); }
+  .final-grid video { max-width: 340px; margin-inline: auto; }
+  .thumbwrap { grid-template-columns: 110px minmax(0, 1fr); }
+  .thumbimg { width: 110px; }
+}
 </style>
 
 <div class="wrap">
   <header>
-    <span class="kicker">Microduck · simulation clips · updated 7 October 2026</span>
+    <span class="kicker">Microduck · simulation clips · candidate final, 7 October 2026</span>
     <h1>Microduck <em>emotions</em></h1>
     <p class="lead">Fourteen emotions for Microduck. Each one is a motion and a sound designed together, beat by beat,
       and the beak opens with the sound. All fourteen are on the robot's gamepad. These clips are rendered in MuJoCo with the
       robot's own control policies, its servo model and the same sound files the robot plays.</p>
     <div class="facts">
       <span><b>14</b> emotions</span>
-      <span><b>1.5–10.6 s</b> each</span>
-      <span><b>48 s</b> compilation, devastated first</span>
+      <span><b>13</b> in the candidate final, <b>43.7 s</b>, sad first</span>
       <span>sound on: click a clip to play it</span>
     </div>
   </header>
 
+  <section class="final" id="final" aria-labelledby="final-h">
+    <div class="final-grid">
+      <video src="final/microduck_emotions_final_page.mp4?v=1" poster="final/thumbnail.jpg?v=1" controls playsinline preload="metadata"></video>
+      <div class="final-text">
+        <h2 id="final-h">Candidate final</h2>
+        <div class="status">
+          <span class="chip hot">ready for your go · not published</span>
+          <span class="chip">13 emotions</span><span class="chip">43.7 s</span><span class="chip">1080×1920</span>
+          <span class="chip">Carefree</span><span class="chip">−14 LUFS</span><span class="chip">41.6 MB</span>
+        </div>
+        <ul class="decisions">
+          <li><b>Order</b> Sad, curious, yes, no, defiant, impatient, angry, mock, mmh?, yes!, excited, devastated, play dead. Your frame, with four placed by me:</li>
+          <li><b>Mock</b> right after angry: the teasing that follows the anger (laugh is out).</li>
+          <li><b>Mmh?</b> later, as you asked: after mock, a puzzled pause before the joy.</li>
+          <li><b>Yes!</b> before excited: a curt yes that tips into the excitement.</li>
+          <li><b>Devastated</b> just before play dead: the crash, then the punchline.</li>
+          <li><b>Scenes</b> Forest, night, studio, grid, summit, desk, grid, studio, forest, summit, beach, night, grid: no two neighbours share a scene, and play dead ends back on the simulator grid.</li>
+          <li><b>Music</b> Carefree comes in with curious at 5.4 s and dips under every quack.</li>
+          <li><b>Text</b> The k / 13 counter stays; the end card is gone (the dead duck is held 1.4 s).</li>
+        </ul>
+        <h3>The image problems you saw, fixed</h3>
+        <ul class="fixes">
+          <li><b>Blocky, blinking shadows (desk worst) and the stray beach shadow.</b> One bug: MuJoCo fixes the shadow area when the renderer is created, and the emotion code had briefly set the scene size to 141 m, so each shadow pixel was about 10 cm. The scene size is now set first; shadows are sharp and start at the feet.</li>
+          <li><b>Glittering specks at night.</b> The film grain was redrawn every frame; it is off, and every frame is rendered at 1.5× and scaled down so stars and edges stop crawling.</li>
+          <li><b>Blockiness in dark scenes.</b> Each re-encode lost detail; the clips are now kept near-lossless until one final encode tuned for dark scenes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="thumbwrap">
+      <img src="final/thumbnail.jpg?v=1" alt="Thumbnail: Microduck, early emotion design, over a frame of the duck with its beak open" class="thumbimg">
+      <div>
+        <h3>Thumbnail</h3>
+        <p class="why">A real frame: defiant on the summit at 1.35 s, beak wide open, the sunset over the sea of clouds behind. 1080×1920 JPEG, 266 KB. For Shorts it can only be uploaded from YouTube Studio on a computer; the socials session will put it in your Downloads folder.</p>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="sub">Post texts</h3>
+      <p class="why">Your words, lightly cleaned up; I only added the link and the music credit, which the CC BY licence requires. No hashtags. The link goes where it is clickable.</p>
+      <div class="posts" id="posts"></div>
+    </div>
+
+    <div class="repo">
+      <h3 class="sub">Can people reuse it from the link?</h3>
+      <p><b>Yes for the emotions themselves, not for the whole pipeline.</b> Repo: <a href="https://github.com/RemiFabre/microduck_emotions" target="_blank" rel="noopener">RemiFabre/microduck_emotions</a> (public).</p>
+      <ul>
+        <li>New: <code>export/</code> (3.9 MB) holds all 14 emotions as keyframe timelines and the robot's sounds, with a README on the format and on playing one on a Microduck or in any simulator. The repo README now opens on it.</li>
+        <li><code>quack.py</code> makes new sounds in the duck's voice with only numpy and scipy.</li>
+        <li>Still tied to your workspace: the simulation renderers (they import <code>duckfilm.py</code>, the robot model and the policies by absolute paths), and the robot code is only a patch file, since <code>pad-expressions</code> is not pushed.</li>
+        <li>The repo is about 480 MB to clone, because of the review videos.</li>
+      </ul>
+      <p><b>Two things before posting.</b> There is no licence yet (I suggest Apache-2.0, like microduck, microduck_rl and the dataset card). The duck's sudo password was in <code>install-on-duck.sh</code>: I removed it, but it stays in the public history, so change it on the duck.</p>
+    </div>
+  </section>
+
+  <details class="earlier">
+    <summary>Earlier: the three tryouts and the builder</summary>
   <section class="cut" aria-labelledby="cut-h">
     <div class="cut-head">
       <h2 id="cut-h">The cut for socials: your choices</h2>
@@ -215,6 +300,7 @@ footer code { font-family: var(--mono); font-size: 0.8rem; }
       </div>
     </div>
   </section>
+  </details>
 
   <section class="comp" aria-labelledby="comp-h">
     <video id="comp" controls playsinline preload="metadata" poster="posters/compilation.jpg"
@@ -437,5 +523,45 @@ for (const b of document.querySelectorAll(".stamp")) {
       render();
     }, () => {});
   })();
+})();
+</script>
+
+<script>
+(() => {
+  const HIS = "I did some early emotion and animation design for Microduck for the theater videos I've been doing, and I realized I didn't share how to reproduce them. So here it is. Contributions are very welcome!";
+  const LINK = "https://github.com/RemiFabre/microduck_emotions";
+  const FULL = 'Music: "Carefree" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/';
+  const SHORT = "Music: Carefree by Kevin MacLeod (CC BY 4.0)";
+  const POSTS = [
+    ["YouTube Shorts", "@LKama07", "Title: Microduck: early emotion design\n\n" + HIS + "\n\n" + LINK + "\n\n" + FULL, "title 31 / 100"],
+    ["TikTok", "@remifabrerobot", HIS + "\n\n" + FULL, null],
+    ["Instagram", "@remi_fabre_robot", HIS + "\n\n" + FULL, null],
+    ["Threads", "@remi_fabre_robot", HIS + "\n\n" + LINK + "\n\n" + SHORT, null],
+    ["Bluesky", "remifabre.bsky.social", HIS + "\n\n" + LINK + "\n\n" + SHORT, null],
+    ["X", "@RemiFabreRobot", HIS + "\n\n" + LINK + "\n\n" + SHORT, null],
+  ];
+  const LIMIT = {"YouTube Shorts": 5000, TikTok: 2200, Instagram: 2200, Threads: 500, Bluesky: 300, X: 280};
+  const box = document.getElementById("posts");
+  if (!box) return;
+  for (const [name, acct, text, extra] of POSTS) {
+    let n = text.length;
+    if (name === "X") n = text.length - LINK.length + 23;            // X counts every link as 23 characters
+    if (name === "YouTube Shorts") n = text.split("\n\n").slice(1).join("\n\n").length;
+    const el = document.createElement("article");
+    el.className = "post";
+    el.innerHTML = `<header><strong></strong><span class="count"></span></header><span class="acct"></span><pre></pre>
+      <button class="btn" type="button">Copy</button>`;
+    el.querySelector("strong").textContent = name;
+    el.querySelector(".acct").textContent = acct + (name === "TikTok" || name === "Instagram" ? " · no link: not clickable there" : "");
+    el.querySelector(".count").textContent = (extra ? extra + " · " : "") + `${n} / ${LIMIT[name]}`;
+    el.querySelector("pre").textContent = text;
+    const b = el.querySelector("button");
+    b.addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(text); b.textContent = "Copied"; }
+      catch { const r = document.createRange(); r.selectNodeContents(el.querySelector("pre")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected: press Cmd+C"; }
+      setTimeout(() => (b.textContent = "Copy"), 2000);
+    });
+    box.appendChild(el);
+  }
 })();
 </script>
