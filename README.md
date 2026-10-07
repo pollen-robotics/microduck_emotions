@@ -12,6 +12,8 @@ The simulation renderers (`motion/`, `showcase/`, the `sounds/make_*.py` generat
 Microduck workspace: they import `duckfilm.py` (not in this repo), the robot model from `microduck_rl` and the
 policies from `microduck` through absolute paths.
 
+Licence: Apache-2.0 ([`LICENSE`](LICENSE)). Contributions are very welcome.
+
 The rest of this README is the working log of the design.
 
 Body language and quack sounds for Microduck, designed so that Reachy Mini and Microduck can act emotional scenes

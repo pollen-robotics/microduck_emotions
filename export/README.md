@@ -201,9 +201,8 @@ The robot build uses a 0.05 s beak table for those two; this function at its def
 
 ## Licence
 
-This repository has no licence file yet. Choosing one is the author's decision.
-Until there is one, normal copyright applies: if you want to reuse these files in a project, open an issue and ask.
-(The Microduck runtime and microduck_rl repositories are Apache-2.0. That does not cover this repository.)
+Apache License 2.0, like the Microduck runtime and microduck_rl: see [`LICENSE`](../LICENSE) at the root of this
+repository. It covers the keyframes, the sounds and the code.
 
 ## Contributing
 
