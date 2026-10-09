@@ -8,11 +8,27 @@ Watch them in `previews/`.
 - `emotions.json`: the list (name, duration, description, files, notes for the real robot).
 - `keyframes/<name>.json`: the motion, one sample every 0.1 s.
 - `sounds/<name>.wav`: the sound, played from `sound_at_s` (0 except devastated, 0.3 s).
-- `robot/pad-expressions.patch`: the Microduck runtime code that plays them from the gamepad
+- `robot/emotions/`: the same emotions ready for a Microduck, one `<name>.json` and `<name>.wav` each (made by
+  `robot/make_robot_set.py`; play dead is not in it, its dead pose needs a joint-level call the runtime lacks).
+- `robot/pad-expressions.patch`: the older runtime code that played them from the gamepad
   (applies on [pollen-robotics/microduck](https://github.com/pollen-robotics/microduck) commit `2c61dcc`).
 - `quack.py`: the robot's voice synth in Python (numpy, scipy), to make new sounds.
 
-## Replay one
+## Play one on a Microduck, or in its simulator
+
+With a runtime that plays emotions ([pollen-robotics/microduck#384](https://github.com/pollen-robotics/microduck/pull/384),
+in review), copy `robot/emotions/` to `/var/lib/robot/emotions/` on the robot and restart `robotd`; each emotion is
+then a skill:
+
+```
+robotctl robot do sad
+sudo robotctl pad bind y sad      # Y plays it
+```
+
+In the simulator (`scripts/duck-sim` in the runtime repo), copy them to `~/.cache/duck-sim/emotions/` before
+starting it, then `scripts/duck-sim ctl robot do sad`.
+
+## Replay one anywhere else
 
 Interpolate the keyframes, send the head and body targets to your robot or simulation at that rate, and start the wav
 at `sound_at_s`. Values are deltas from the home pose, in radians (body height in metres); a missing field means 0.
