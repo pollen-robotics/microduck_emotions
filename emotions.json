@@ -1,5 +1,5 @@
 {
- "about": "The 14 Microduck emotions: a keyframes timeline and the robot's sound for each. Format in README.md.",
+ "about": "The Microduck emotions: a keyframes timeline and the robot's sound for each. Format in README.md.",
  "keyframe_step_s": 0.1,
  "emotion_mode": "Robot build only: tap D-pad Up to enter emotion mode. A short press is under 0.6 s; a long press fires once held 0.6 s.",
  "emotions": [
@@ -243,6 +243,48 @@
      }
     ]
    }
+  },
+  {
+   "name": "surprised",
+   "button": null,
+   "press": null,
+   "duration_s": 2.6,
+   "description": "'Whoa!': the head snaps back and up on a quack that jumps an octave, a frozen beat, then a cautious lean forward with a head tilt and a soft 'ooh?'.",
+   "keyframes": "keyframes/surprised.json",
+   "sounds": [
+    "sounds/surprised.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/surprised.mp4",
+   "robot_note": "Not bound on the pad yet (all twelve slots are taken). Made in simulation only: not yet tried on a real Microduck."
+  },
+  {
+   "name": "hello",
+   "button": null,
+   "press": null,
+   "duration_s": 3.4,
+   "description": "A warm hello: head tilted, a little bow on a soft 'hel-', up on a rising '-lo~' (a major third), then a happy sway on three climbing chirps.",
+   "keyframes": "keyframes/hello.json",
+   "sounds": [
+    "sounds/hello.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/hello.mp4",
+   "robot_note": "Not bound on the pad yet (all twelve slots are taken). Made in simulation only: not yet tried on a real Microduck."
+  },
+  {
+   "name": "sleepy",
+   "button": null,
+   "press": null,
+   "duration_s": 9.0,
+   "description": "A long yawn with the beak up, then it sits; the head droops, nods off, jerks awake on a small 'wek?', droops again and falls asleep on two soft snores. It stays seated, head down.",
+   "keyframes": "keyframes/sleepy.json",
+   "sounds": [
+    "sounds/sleepy.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/sleepy.mp4",
+   "robot_note": "Stays seated with the head down, asleep: stand it up again with the sit toggle (D-pad Down). Not bound on the pad yet (all twelve slots are taken). Made in simulation only: not yet tried on a real Microduck."
   }
  ]
 }
