@@ -1,0 +1,129 @@
+<title>Microduck WOW</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one column of short notes, two rows of tall phone-shaped clips (motion, then sound), studio-slate ground like the renders */
+:root {
+  --bg: #e9edf2;
+  --panel: #f7f8fa;
+  --fg: #1b2230;
+  --muted: #5a6577;
+  --line: #cfd6e0;
+  --amber: #b86a00;
+  --amber-soft: #f5a30a;
+  --display: "Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141a25; --panel: #1c2432; --fg: #e8ecf2; --muted: #9aa6b8; --line: #2c3647; --amber: #f5a30a; --amber-soft: #f5a30a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141a25; --panel: #1c2432; --fg: #e8ecf2; --muted: #9aa6b8; --line: #2c3647; --amber: #f5a30a; --amber-soft: #f5a30a;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font: 16px/1.5 var(--body); }
+.wrap { max-width: 1080px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 48px; display: grid; gap: 30px; }
+header { display: grid; gap: 8px; }
+.eyebrow { font: 600 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--amber); }
+h1 { font: 800 clamp(34px, 6vw, 52px)/1 var(--display); margin: 0; letter-spacing: -.01em; }
+h1 span { color: var(--amber-soft); }
+.lede { max-width: 62ch; margin: 0; color: var(--muted); }
+h2 { font: 600 22px/1.2 var(--display); margin: 0; text-wrap: balance; }
+section { display: grid; gap: 14px; }
+section > p { margin: 0; max-width: 64ch; color: var(--muted); }
+.clips { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+figure { margin: 0; display: grid; gap: 8px; align-content: start; min-width: 0; }
+video { width: 100%; max-width: 100%; aspect-ratio: 9 / 16; background: #0e131c; border-radius: 10px; display: block; }
+figcaption { display: grid; gap: 4px; min-width: 0; }
+.name { font: 600 14px/1.3 var(--mono); color: var(--fg); overflow-wrap: anywhere; }
+.name b { color: var(--amber); font-weight: 600; }
+.what { font-size: 14.5px; color: var(--muted); }
+.notes { border-top: 1px solid var(--line); padding-top: 22px; display: grid; gap: 10px; }
+.notes ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; max-width: 70ch; }
+.notes li { color: var(--muted); }
+.notes li strong { color: var(--fg); }
+code { font: 13.5px var(--mono); background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+.talk { justify-self: start; font: 600 14px/1 var(--body); color: var(--fg); text-decoration: none; border: 1px solid var(--line); background: var(--panel); border-radius: 999px; padding: 9px 16px; }
+.talk:hover, .talk:focus-visible { border-color: var(--amber); outline: none; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Microduck emotion · round 2 · simulation</div>
+    <h1>W<span>O</span>W</h1>
+    <p class="lede">Amazed. The head starts on the duck's left, the beak opens, the head sweeps up over the top and comes down to the right, with one long sound that goes low, intense, low. Same pipeline as the 14 emotions: shipped policies, BAM servos, the old duck's voice. Sound on.</p>
+  </header>
+
+  <section>
+    <h2>New · Starting low</h2>
+    <p>Your round 1 note: the head starts lower, for more drama. At the left the beak now points down (+0.65 rad), then it goes up over the top. Same sound (W1).</p>
+    <div class="clips">
+      <figure>
+        <video src="clips/wow_low__W1_swell.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>low · down, up, down</b> · 4.0 s</span><span class="what">Beak down at the left, up to −0.85 at the top, and down again (+0.65) at the right.</span></figcaption>
+      </figure>
+      <figure>
+        <video src="clips/wow_low_half__W1_swell.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>low · down, up, half</b> · 4.0 s</span><span class="what">Same start and top, but at the right the beak only comes half way down (+0.3).</span></figcaption>
+      </figure>
+      <figure>
+        <video src="clips/wow_low_big__W1_swell.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>low · big</b> · 4.6 s</span><span class="what">The big one starting low: yaw ±1.0, beak up −1.0, roll, slow through the top, half way down at the right.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>1 · Round 1 motions</h2>
+    <p>All three use the same sound (W1). The sound peaks when the head is at the top; the beak opens at the left and closes as the sound dies.</p>
+    <div class="clips">
+      <figure>
+        <video src="clips/wow_arc__W1_swell.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>arc</b> · 4.0 s</span><span class="what">Your brief, plain. Yaw ±0.85 rad, beak up −0.85 at the top, the sweep takes 1.8 s.</span></figcaption>
+      </figure>
+      <figure>
+        <video src="clips/wow_arc_roll__W1_swell.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>arc + roll</b> · 4.0 s</span><span class="what">Same arc, the head also tilts into the turn (roll ±0.25): left at the left, right at the right.</span></figcaption>
+      </figure>
+      <figure>
+        <video src="clips/wow_big__W1_swell.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>big</b> · 4.6 s</span><span class="what">More exaggerated: yaw ±1.0, beak up −1.0, roll too, and a 2.4 s sweep that slows down through the top (the long "OOO").</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>2 · Pick a sound</h2>
+    <p>One continuous sound each, on the plain arc. Rising then falling, with smooth glides only.</p>
+    <div class="clips">
+      <figure>
+        <video src="clips/wow_arc__W1_swell.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>W1 swell</b> · 2.3 s</span><span class="what">176 → 405 → 143 Hz. The timbre opens from a dark "oo" to a bright "aa" at the top and closes again: w-o-w.</span></figcaption>
+      </figure>
+      <figure>
+        <video src="clips/wow_arc__W2_wobble.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>W2 wobble</b> · 2.3 s</span><span class="what">W1 plus a 5 Hz awe wobble that grows toward the top: wooOOoOOow.</span></figcaption>
+      </figure>
+      <figure>
+        <video src="clips/wow_arc__W3_ride.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>W3 ride</b> · 2.3 s</span><span class="what">The duck's own "wheee" recipe, retimed to the arc: 202 → 522 Hz, a small flick up, a long fall. The highest and most excited.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="notes">
+    <h2>Good to know</h2>
+    <ul>
+      <li><strong>Which left.</strong> It starts on the duck's own left, so on your right when you face it, like defiant. Mirroring it is a one-line change.</li>
+      <li><strong>Tried and dropped.</strong> Leaning the body back at the top: the policy pulled the head down instead (beak up only −0.21). Lowering the neck at the two ends: no visible gain, and on the real duck forward head weight makes it step.</li>
+      <li><strong>Real duck watch point.</strong> When the beak goes up, the standing policy dips the neck by itself (about −0.25 rad). The simulation shows no drift; the real duck may react differently. With the beak down at the start, the policy lifts the neck instead, which keeps the head's weight back.</li>
+      <li><strong>Voice.</strong> All sounds use seed <code>4145077059</code>, the old duck's voice. Graphite has it since 10 October, 20:06 (backup of its own voice kept, reversible).</li>
+    </ul>
+    <a class="talk" href="http://localhost:7788/focus/8d18ad2d-5b3b-4bfa-a607-7ed03a977e78" target="_blank" rel="noopener">Talk to the agent</a>
+  </section>
+</div>

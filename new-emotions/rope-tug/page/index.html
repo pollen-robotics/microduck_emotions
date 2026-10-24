@@ -1,0 +1,152 @@
+<title>Microduck Rope Tug</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: the WOW page's family (studio slate, amber), one column of short notes, rows of wide film-shaped clips */
+:root {
+  --bg: #e9edf2;
+  --panel: #f7f8fa;
+  --fg: #1b2230;
+  --muted: #5a6577;
+  --line: #cfd6e0;
+  --rope: #9a6a2c;
+  --amber: #b86a00;
+  --amber-soft: #f5a30a;
+  --display: "Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141a25; --panel: #1c2432; --fg: #e8ecf2; --muted: #9aa6b8; --line: #2c3647; --rope: #d9b27a; --amber: #f5a30a; --amber-soft: #f5a30a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141a25; --panel: #1c2432; --fg: #e8ecf2; --muted: #9aa6b8; --line: #2c3647; --rope: #d9b27a; --amber: #f5a30a; --amber-soft: #f5a30a;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font: 16px/1.5 var(--body); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; display: grid; gap: 30px; }
+header { display: grid; gap: 8px; }
+.eyebrow { font: 600 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--amber); }
+h1 { font: 800 clamp(34px, 6vw, 52px)/1 var(--display); margin: 0; letter-spacing: -.01em; }
+h1 span { color: var(--rope); }
+.lede { max-width: 66ch; margin: 0; color: var(--muted); }
+h2 { font: 600 22px/1.2 var(--display); margin: 0; text-wrap: balance; }
+section { display: grid; gap: 14px; }
+section > p { margin: 0; max-width: 66ch; color: var(--muted); }
+.clips { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+figure { margin: 0; display: grid; gap: 8px; align-content: start; min-width: 0; }
+video { width: 100%; max-width: 100%; aspect-ratio: 16 / 9; background: #0e131c; border-radius: 10px; display: block; }
+figcaption { display: grid; gap: 4px; min-width: 0; }
+.name { font: 600 14px/1.3 var(--mono); color: var(--fg); overflow-wrap: anywhere; }
+.name b { color: var(--amber); font-weight: 600; }
+.what { font-size: 14.5px; color: var(--muted); }
+.notes { border-top: 1px solid var(--line); padding-top: 22px; display: grid; gap: 10px; }
+.notes ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; max-width: 74ch; }
+.notes li { color: var(--muted); }
+.notes li strong { color: var(--fg); }
+code { font: 13.5px var(--mono); background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+.tablewrap { overflow-x: auto; max-width: 100%; }
+table { border-collapse: collapse; font-size: 14.5px; font-variant-numeric: tabular-nums; min-width: 460px; }
+th, td { text-align: left; padding: 6px 14px 6px 0; border-bottom: 1px solid var(--line); }
+th { font: 600 12px/1.2 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+td:first-child { font-weight: 700; }
+.talk { justify-self: start; font: 600 14px/1 var(--body); color: var(--fg); text-decoration: none; border: 1px solid var(--line); background: var(--panel); border-radius: 999px; padding: 9px 16px; }
+.talk:hover, .talk:focus-visible { border-color: var(--amber); outline: none; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Microduck emotion · round 2 · simulation · episode 4</div>
+    <h1>Rope <span>tug</span></h1>
+    <p class="lede">The duck holds the leash in its shut beak and pulls it to the side, mostly with the head, leaning back into each pull so the legs work too. The emotion ends with the head back in the middle and the beak still shut, so the rope stays in for your pad drive backward. Staged like the story: Reachy asleep 40 cm away, the rope tied round his base, the film's side camera. Sound on.</p>
+  </header>
+
+  <section>
+    <h2>New · Your pick, bigger</h2>
+    <p>Two pulls then a shake, with the grunts. The pulls now reach 0.80 and 0.95 rad (were 0.55 and 0.72) and the shake goes further to the side. On the rope: facing Reachy, a sideways pull swings the beak across the rope, not along it, so it takes up only about 1 cm and the rope barely straightens. Standing the duck at an angle fixes that.</p>
+    <div class="clips">
+      <figure>
+        <video src="clips/shake_big__E1_grunts.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>bigger · facing Reachy</b> · 5.5 s</span><span class="what">The staging of the story. Bigger pulls; the rope starts with only a slight sag, and each pull takes up about 1 cm of it.</span></figcaption>
+      </figure>
+      <figure>
+        <video src="clips/shake_big_side__E1_grunts.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>bigger · side-on</b> · 5.5 s</span><span class="what">The same move with Reachy 60° to the duck's left. Each pull to its right now goes along the rope: 2.6 cm per pull, and you see the sag go straight. Its face also turns to the camera. On set, you would stand the duck at that angle.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Your question · the sim bug</h2>
+    <p>Six emotions ask for a small bow (body pitch 0.05 to 0.14 rad): sad, impatient, mock, laugh, excited, angry. The real robot does exactly that, a bow of 2.5 to 5.5°, which is the small body movement you saw. The robot was right. The old simulation videos were wrong: they sent the bow to the body-height input, so the duck bobbed up and down instead of bowing, and the legs moved much more than on the robot.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Emotion</th><th>Bow asked</th><th>Old sim videos</th><th>Real robot (and fixed sim)</th></tr></thead>
+        <tbody>
+          <tr><td>sad</td><td>0.05 rad</td><td>bobs 0.8 cm</td><td>bows 2.6°</td></tr>
+          <tr><td>impatient</td><td>0.07 rad</td><td>bobs 0.6 cm</td><td>bows 2.5°</td></tr>
+          <tr><td>mock</td><td>0.10 rad</td><td>bobs 1.7 cm</td><td>bows 4.5°</td></tr>
+          <tr><td>laugh</td><td>0.10 rad</td><td>bobs 1.8 cm</td><td>bows 5.0°</td></tr>
+          <tr><td>excited</td><td>0.12 rad</td><td>bobs 2.3 cm</td><td>bows 5.2°</td></tr>
+          <tr><td>angry</td><td>0.14 rad</td><td>bobs 2.6 cm</td><td>bows 5.5°</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Wrong in those six: the videos from my renderer (option pages, the showcase, the dataset and repo previews). Their head, beak and sound are right. The other seven emotions have no body pose and are unaffected. The robot's own simulator (duck-sim) runs the robot code, so it was right too. Re-rendering the six with the fix is a few minutes, after the shoot.</p>
+  </section>
+
+  <section>
+    <h2>Round 1 · Pick a motion</h2>
+    <p>All three use the same small effort sound (E1). Each pull has a small wind-up the other way, a fast yank, a strained hold with a shiver, and a slower give-back, as if the rope pulled the head home. The pulls grow and the rhythm is uneven.</p>
+    <div class="clips">
+      <figure>
+        <video src="clips/tug3__E1_grunts.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>three pulls, one side</b> · 5.4 s</span><span class="what">Three pulls to the duck's right, toward the camera, each bigger than the last. The third is held longest.</span></figcaption>
+      </figure>
+      <figure>
+        <video src="clips/tug3_alt__E1_grunts.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>right, left, right</b> · 5.3 s</span><span class="what">A dog's tug-of-war: the pulls alternate sides, the last one the biggest.</span></figcaption>
+      </figure>
+      <figure>
+        <video src="clips/tug2_shake__E1_grunts.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>two pulls, then a shake</b> · 5.5 s</span><span class="what">Two pulls to the right, then quick small side-to-side shakes of the head while it leans back, like a dog worrying a toy.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <h2>Round 1 · Pick a sound</h2>
+    <p>On the first motion. The beak is shut on the rope, so every sound is muffled, as if through closed lips. E1 is the sound in the row above.</p>
+    <div class="clips">
+      <figure>
+        <video src="clips/tug3__S0_silent.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>silent</b></span><span class="what">No sound at all, as in your first idea.</span></figcaption>
+      </figure>
+      <figure>
+        <video src="clips/tug3__E2_grunts_breaths.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>E2 grunts and breaths</b></span><span class="what">E1's small "nnngh" on each pull (rising while it strains, gliding down as it gives back), plus a quick sniff before each new pull and a tired puff out of the nose at the end.</span></figcaption>
+      </figure>
+      <figure>
+        <video src="clips/tug3__E3_growl.mp4" controls playsinline preload="metadata"></video>
+        <figcaption><span class="name"><b>E3 growl</b></span><span class="what">One low muffled "rrrr" through the whole tug, swelling and bending up on each pull, like a dog playing tug-of-war.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="notes">
+    <h2>Good to know</h2>
+    <ul>
+      <li><strong>The legs.</strong> Asking the standing policy to crouch does almost nothing (2 cm asked, under 1 mm done). Leaning the body back works: the trunk tips back about 7 degrees on each pull and the knees and ankles bend. That is the leg motion you see.</li>
+      <li><strong>Which side.</strong> The pulls go to the duck's own right, toward the film camera, so its face turns into the shot. Mirroring is a one-line change.</li>
+      <li><strong>Real duck watch points.</strong> In simulation the duck stays put (under 1 cm of drift) even with the rope taut. On the real duck, rope tension may make it step; and the beak servo will be squeezing the rope the whole time you drive.</li>
+      <li><strong>Next.</strong> Once you pick the staging, I make the robot file (same format as the 13 emotions, a 50 Hz timeline, with the grunts) and send it to the story session for its take. A real-duck test comes as a guided script, and nothing moves without your go.</li>
+      <li><strong>Also in progress.</strong> Kicks back on your duck (checking whether current main works on your alpha unit), your branches, and the old voice on robot 3: I asked the secretary which duck that is, since none answers from here.</li>
+    </ul>
+    <a class="talk" href="http://localhost:7788/focus/e3b086d8-19e9-4b6d-9861-61bccc764ef5" target="_blank" rel="noopener">Talk to the agent</a>
+  </section>
+</div>
