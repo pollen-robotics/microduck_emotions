@@ -1,6 +1,6 @@
 # microduck_emotions
 
-An early prototype of emotional design for Microduck: 14 emotions, each a motion and a sound designed together.
+An early prototype of emotional design for Microduck: 15 emotions, each a motion and a sound designed together.
 Watch them in `previews/`.
 
 ## Files

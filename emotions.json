@@ -1,5 +1,5 @@
 {
- "about": "The 14 Microduck emotions: a keyframes timeline and the robot's sound for each. Format in README.md.",
+ "about": "The 15 Microduck emotions: a keyframes timeline and the robot's sound for each. Format in README.md.",
  "keyframe_step_s": 0.1,
  "emotion_mode": "Robot build only: tap D-pad Up to enter emotion mode. A short press is under 0.6 s; a long press fires once held 0.6 s.",
  "emotions": [
@@ -243,6 +243,18 @@
      }
     ]
    }
+  },
+  {
+   "name": "wild_cartoon",
+   "duration_s": 4.5,
+   "description": "Amazed, cartoon style, for comedy: the head starts low on the duck's left, sweeps up over the top and lands half way down on the right, while a low 'w' leaps an octave and a half, wobbles fast on the held top and slides down below where it started.",
+   "keyframes": "keyframes/wild_cartoon.json",
+   "sounds": [
+    "sounds/wild_cartoon.wav"
+   ],
+   "sound_at_s": 0.0,
+   "video": "previews/wild_cartoon.mp4",
+   "robot_note": "Not on a pad button: robotctl robot do wild_cartoon. The WOW motion, which starts with the beak down so the head's mass stays back."
   }
  ]
 }
