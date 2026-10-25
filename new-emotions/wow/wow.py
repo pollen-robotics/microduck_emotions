@@ -156,6 +156,24 @@ def timbre_mix(arc, dur, freq, loud, dark, bright, am_scale=0.6):
 
 DARK = dict(tilt=2.8, brightness=0.05, nasal=0.15, formant_gain=0.0, quackiness=p.quackiness * 0.5, breath=0.08)
 BRIGHT = dict(tilt=1.5, brightness=0.55, nasal=0.75, quackiness=p.quackiness * 0.7, breath=0.04)
+# round 3 (Rémi 2026-10-25: W2 is the best, but it "sounds like a ghost"; start lower, rise more, exaggerate, keep the big
+# and small O's, the klaxon tonality). The ghost is the near-sine dark "oo" with breath on a slow symmetric glide: the
+# klaxon timbres keep their buzz (quackiness, AM, nasal 2nd/3rd harmonics) at both ends and lose the breath.
+HORN_OO = dict(tilt=2.1, brightness=0.15, nasal=0.55, quackiness=p.quackiness * 0.9, breath=0.0, vibrato_depth=0.0)
+HORN_AA = dict(tilt=1.4, brightness=0.60, nasal=0.95, quackiness=p.quackiness * 1.1, breath=0.0, vibrato_depth=0.0)
+KLAXON = dict(tilt=1.25, brightness=0.70, nasal=1.0, quackiness=min(p.quackiness * 1.4, 1.0), breath=0.0, vibrato_depth=0.0)
+
+
+def contour_human(arc, t_abs, lo, hi, end, onset=0.85):
+    """The shape of the real wows measured on 2026-10-25 (internet clips, kept local): a low start, a rise that is fast
+    at first and settles into the top (ease-out), the peak a little before halfway, then a fall that starts slowly and
+    drops into the closing 'w' (ease-in). The 'w' slides in from `onset` x lo."""
+    rise = np.clip((t_abs - arc.s0) / (arc.s_peak - arc.s0), 0, 1)
+    fall = np.clip((t_abs - arc.s_peak) / (arc.s1 - arc.s_peak), 0, 1)
+    up, dn = 1 - (1 - rise) ** 2.2, fall ** 1.8
+    semis_up, semis_dn = 12 * math.log2(hi / lo), 12 * math.log2(end / hi)
+    out = np.where(t_abs < arc.s_peak, lo * ST ** (semis_up * up), hi * ST ** (semis_dn * dn))
+    return out * (onset + (1 - onset) * (1 - np.exp(-np.maximum(t_abs - arc.s0, 0) / 0.06)))
 
 
 def sound(arc, kind):
@@ -185,6 +203,55 @@ def sound(arc, kind):
         freq = freq * flick * ST ** (0.5 * wob)
         joy = dict(vibrato_depth=p.vibrato_depth * 0.5, quackiness=p.quackiness * 0.5)
         sig = quack(p, dur, freq, loud, mods=joy, rng=Rng(0x3EEF), am_scale=0.5, breath_scale=0.5)
+    elif kind == "W4_lower":
+        # W2 exactly, only the range: from two octaves under the top instead of one and a bit
+        freq = contour(arc, ta, 0.50 * f0, 2.00 * f0, 0.55 * f0)
+        wob = np.sin(2 * np.pi * 5.2 * t) * (0.15 + 0.75 * loud ** 2)
+        freq = freq * ST ** (0.55 * wob)
+        sig = timbre_mix(arc, dur, freq, loud, dict(DARK, vibrato_depth=0.0), dict(BRIGHT, vibrato_depth=0.0))
+    elif kind == "W5_human":
+        freq = contour_human(arc, ta, 0.55 * f0, 1.90 * f0, 0.62 * f0)
+        wob = np.sin(2 * np.pi * 5.0 * t) * (0.10 + 0.90 * loud ** 2)
+        freq = freq * ST ** (0.8 * wob)
+        sig = timbre_mix(arc, dur, freq, loud, HORN_OO, HORN_AA, am_scale=0.85)
+    elif kind in ("W5_light", "W5_smooth", "W5_clean", "W5_swell"):
+        # round 5 (Rémi: W5 short is the one, but "still a bit of a ghost, too oscillating"): W5 with less or no wobble
+        freq = contour_human(arc, ta, 0.55 * f0, 1.90 * f0, 0.62 * f0)
+        oo, aa, am = HORN_OO, HORN_AA, 0.85
+        if kind == "W5_light":                     # a third of the wobble, and only right at the top
+            freq = freq * ST ** (0.25 * np.sin(2 * np.pi * 5.0 * t) * loud ** 3)
+        elif kind == "W5_clean":                   # no wobble, no jitter, half the buzz's tremolo: the plainest tone
+            oo, aa, am = dict(HORN_OO, jitter_depth=0.0), dict(HORN_AA, jitter_depth=0.0), 0.45
+        elif kind == "W5_swell":                   # no wobble; one overshoot past the top that settles: a single "O"
+            ov = np.exp(-((ta - arc.s_peak + 0.05) / 0.16) ** 2)
+            freq = freq * ST ** (1.5 * ov)
+        sig = timbre_mix(arc, dur, freq, loud, oo, aa, am_scale=am)
+    elif kind == "W6_klaxon":
+        freq = contour_human(arc, ta, 0.55 * f0, 1.90 * f0, 0.62 * f0)
+        wob = np.sin(2 * np.pi * 5.0 * t) * (0.10 + 0.90 * loud ** 2)
+        freq = freq * ST ** (0.8 * wob)
+        sig = quack(p, dur, freq, loud, mods=KLAXON, rng=Rng(0x57A5), am_scale=1.0)
+    elif kind == "W7_big_o":
+        # the big O and the small O, slow enough to hear each: 3.2 Hz swells of pitch AND loudness, deepest at the top
+        freq = contour_human(arc, ta, 0.50 * f0, 2.00 * f0, 0.55 * f0)
+        depth = 0.2 + 0.8 * loud ** 2
+        swell = np.sin(2 * np.pi * 3.2 * (t - 0.15))
+        freq = freq * ST ** (1.6 * depth * swell)
+        loud = loud * (1.0 + 0.30 * depth * swell) / 1.3
+        sig = timbre_mix(arc, dur, freq, loud, HORN_OO, HORN_AA, am_scale=0.85)
+    elif kind == "W8_cartoon":
+        # a short low 'w' that leaps up an octave and a half in 0.3 s, a fast wobble on the held top, then a long slide
+        # down past where it started
+        a0, a1 = arc.s0 + 0.10, arc.s0 + 0.40
+        k_up = np.clip((ta - a0) / (a1 - a0), 0, 1)
+        k_up = k_up * k_up * (3 - 2 * k_up)
+        f_lo, f_hi, f_end = 0.45 * f0, 2.10 * f0, 0.42 * f0
+        fall = np.clip((ta - (arc.s_peak + 0.30)) / (arc.s1 - arc.s_peak - 0.30), 0, 1)
+        fall = fall * fall * (3 - 2 * fall)
+        freq = f_lo * ST ** (12 * math.log2(f_hi / f_lo) * k_up) * ST ** (12 * math.log2(f_end / f_hi) * fall)
+        wob = np.sin(2 * np.pi * 6.5 * t) * np.clip((ta - a1) / 0.3, 0, 1) * (1 - fall)
+        freq = freq * ST ** (0.9 * wob)
+        sig = timbre_mix(arc, dur, freq, loud, HORN_OO, KLAXON, am_scale=0.9)
     else:
         raise ValueError(kind)
     sig = normalise(sig, -3.0)
@@ -200,11 +267,86 @@ SOUNDS = {
     "W2_wobble": "W1 plus a 5 Hz awe wobble that swells at the top (wooOOoOOow)",
     "W3_ride": "the duck's own wheee (ride) recipe retimed on the arc: rises to its top note, a little flick up, a long fall; "
                "its excitement wobble",
+    "W4_lower": "W2 with a bigger range: 119 Hz up to 476 Hz (two octaves) and down to 131 Hz; same timbre and wobble",
+    "W5_human": "the real wow's shape: low start, fast rise settling into a held top, slow then sudden fall; 131 -> 452 -> 148 Hz; "
+                "a wider wobble; the klaxon's buzz kept from the oo to the aa, no breath",
+    "W6_klaxon": "W5's pitch in the full klaxon voice: bright, nasal, buzzing all the way through",
+    "W7_big_o": "big O, small O: 3.2 Hz swells of pitch and loudness you can count, 119 -> 476 -> 131 Hz, klaxon oo/aa",
+    "W8_cartoon": "a low 'w' that leaps up an octave and a half in 0.3 s, a fast wobble on the held top, a long slide down below "
+                  "the start; klaxon at the top",
 }
 # first round: every motion with W1, the plain arc with the other two sounds
 RENDERS = [("wow_arc", "W1_swell"), ("wow_arc_roll", "W1_swell"), ("wow_big", "W1_swell"),
            ("wow_arc", "W2_wobble"), ("wow_arc", "W3_ride"),
            ("wow_low", "W1_swell"), ("wow_low_half", "W1_swell"), ("wow_low_big", "W1_swell")]
+
+
+# round 3: the motion is final (low big); only the sound changes, so each one is muxed onto the same film
+ROUND3 = ["W2_wobble", "W4_lower", "W5_human", "W6_klaxon", "W7_big_o", "W8_cartoon"]
+FILM = HERE / "clips" / "wow_low_big__W1_swell.mp4"     # the orbit film of the final motion; its audio is the wav from t = 0
+
+
+def round3():
+    import subprocess
+    arc = ARCS["wow_low_big"]
+    for snd in ROUND3:
+        wav = wav_path("wow_low_big", snd)
+        write_wav(wav, sound(arc, snd), -3.0)
+        out = HERE / "clips" / f"wow_low_big__{snd}.mp4"
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(FILM), "-i", str(wav), "-map", "0:v", "-map", "1:a",
+                        "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", str(out)], check=True)
+        print("wrote", out.name)
+
+
+# round 4 (Rémi 2026-10-25: "W5 human is the best, but the middle is too long, so we don't understand it's a wow"):
+# W5's recipe, unchanged, on a shorter sound. The motion stays; only where the sound sits on it changes, and the beak
+# follows the sound (it opens just before it and shuts as it dies), so these are simulated again, not muxed.
+SEEN_TOP = ARCS["wow_low_big"].s_peak         # 2.14 s: the head at its highest, as seen
+ROUND4 = {   # label: (sound start, peak, end), absolute seconds
+    "W5a_short": (SEEN_TOP - 0.60, SEEN_TOP, SEEN_TOP + 1.00),      # 1.6 s, peak on the top
+    "W5b_shorter": (SEEN_TOP - 0.45, SEEN_TOP, SEEN_TOP + 0.75),    # 1.2 s, peak on the top
+    "W5c_quick": (SEEN_TOP - 0.30, SEEN_TOP, SEEN_TOP + 0.55),      # 0.85 s, a spoken "wow!" on the top
+    "W5d_at_left": (ARCS["wow_low_big"].s0, ARCS["wow_low_big"].s0 + 0.45, ARCS["wow_low_big"].s0 + 1.20),  # 1.2 s, as the head leaves the left
+}
+
+
+# round 5: W5 short's timing (so the same film and beak), smoother sounds; muxed like round 3
+ROUND5 = {"W5a_light": "W5_light", "W5a_smooth": "W5_smooth", "W5a_clean": "W5_clean", "W5a_swell": "W5_swell"}
+
+
+def round5():
+    import subprocess
+    arc = retimed(ARCS["wow_low_big"], *ROUND4["W5a_short"])
+    film = HERE / "clips" / "wow_low_big__W5a_short.mp4"
+    for label, kind in ROUND5.items():
+        wav = wav_path("wow_low_big", label)
+        write_wav(wav, sound(arc, kind), -3.0)
+        out = HERE / "clips" / f"wow_low_big__{label}.mp4"
+        subprocess.run(["ffmpeg", "-loglevel", "error", "-y", "-i", str(film), "-i", str(wav), "-map", "0:v", "-map", "1:a",
+                        "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", str(out)], check=True)
+        print("wrote", out.name)
+
+
+def retimed(arc, s0, s_peak, s1):
+    import copy
+    a = copy.copy(arc)
+    a.s0, a.s_peak, a.s1 = s0, s_peak, s1
+    return a
+
+
+def round4():
+    import orbit
+    lib.beats_sheet = lambda *a_, **k: None
+    orbit.CAMS["wow_low_big"] = dict(z=0.15, dist=0.62, elev=-6, centre=180)
+    for label, (s0, sp, s1) in ROUND4.items():
+        arc = retimed(ARCS["wow_low_big"], s0, sp, s1)
+        wav = wav_path("wow_low_big", label)
+        write_wav(wav, sound(arc, "W5_human"), -3.0)
+        m = arc.motion()
+        orbit.install("wow_low_big", m.total)
+        meas = lib.render(m, wav, HERE / "orbit_motion", HERE / "clips", sound=label, sound_desc=SOUNDS["W5_human"],
+                          mouth_mode="motion", quiet=True)
+        print(label, f"{s1 - s0:.2f} s", "FELL" if meas["fell"] else "no fall", "drift", meas.get("drift_cm"))
 
 
 def wav_path(motion, snd):
@@ -216,7 +358,16 @@ def main():
     ap.add_argument("--orbit", action="store_true")
     ap.add_argument("--only", default=None)
     ap.add_argument("--sounds-only", action="store_true")
+    ap.add_argument("--round3", action="store_true")
+    ap.add_argument("--round4", action="store_true")
+    ap.add_argument("--round5", action="store_true")
     a = ap.parse_args()
+    if a.round5:
+        return round5()
+    if a.round3:
+        return round3()
+    if a.round4:
+        return round4()
     for mname, snd in RENDERS:
         stem = f"{mname}__{snd}"
         if a.only and a.only not in stem:

@@ -51,3 +51,56 @@ Motions (all with E1): `tug3` (3 pulls right, 0.50/0.64/0.76, last held), `tug3_
 
 Next: Rémi picks; iterate; then robot set (`<name>.json` + `<name>.wav`, name probably `tug`) and the guided test on
 graphite (`notes/home-wifi/duck-emotions` pattern). Nothing on the robot without his go; nothing published.
+
+## Round 2 (2026-10-24 ~12:00): his pick, bigger
+
+Rémi (voice via secretary): picks "two pulls then a shake" with the E1 grunts; wants bigger pulls ("I don't see the rope
+tighten"); asks about the sim bug; wants branches pushed (never main); robot 3 gets the old voice; kicks back.
+
+- `shake_big`: pulls 0.80 / 0.95 (were 0.55 / 0.72), shake around -0.62 +-0.34 at 3.3 Hz; yaw command clipped at +-1.0
+  (the trained head range; the shiver had pushed it to -1.07). Same json for both stagings.
+- Rope physics, measured with a slack rope: facing Reachy the knot gets only 0.5 cm (round 1) / 1.1 cm (round 2)
+  further from the tie (the beak swings ACROSS the rope); a bigger lean (0.20) adds nothing (the policy dips the neck to
+  -0.80 to keep the head). Side-on staging (`stage=60`: Reachy 60 deg to the duck's left) gives 2.6 cm per pull.
+  Rope lengths: facing 33 cm (rest straightness 0.98 -> 0.994), side-on 35.7 cm (0.962 -> 0.990).
+- Overrun check on shake_big (stand policy, kp 160): no joint target past its limit; peak speeds head yaw 2.6 rad/s,
+  knees 1.6, neck 1.5.
+- Robot files: `robot/set/rope_tug.json` (= shake_big.json, 276 keys at 50 Hz, mouth 0) + `rope_tug.wav` (E1, 5.5 s,
+  48 kHz mono int16 like the shipped set). Guided test: `duck-rope-tug` (DUCK_HOST=..., installs, one restart with
+  motors off, knot in by hand while resting, Enter per try, notes to rope-tug-test.log). Not run.
+
+## The sim bug, measured on the six shipped emotions with a body pose (2026-10-24)
+
+Replaying robot/emotions/<name>.json in duckfilm, old layout vs robotd layout: sad (bp 0.05) old sim bobs 0.8 cm / robot
+bows 2.6 deg; impatient (0.068) 0.6 cm / 2.5 deg; mock (0.099) 1.7 cm / 4.5 deg; laugh (0.10) 1.8 cm / 5.0 deg; excited
+(0.12) 2.3 cm / 5.2 deg; angry (0.14) 2.6 cm / 5.5 deg. Old sim: almost no bow (trunk pitch within ~2 deg). The robot
+does what the files say (a small bow, no height change), which is what Rémi saw. duck-sim (robotd in the loop) was right.
+
+## Branches pushed (2026-10-24, his go: own branches, never main, no PR)
+
+microduck `ground-pick-mouth` (ec406c9), microduck_emotions `robot-set` (da7adaa) and `new-emotions` (c2c5e1e: WOW +
+rope tug folders, without media and without wow/voice-seed, whose script holds the factory sudo password),
+microduck_rl `ground-grasp` (31fcfe0). Already there: microduck `play-emotions` (PR #384). Not pushed (older or secret,
+ask): microduck `pad-expressions` (23 commits, Sep 6), microduck_rl `emotions-stomp`, `flamingo-allcol`,
+`wip/tricks-infer-policy`, `hostile-terrain` (ahead 1), microduck-challenges `arena-campaign` + 18 `v-*` (Arena = secret).
+
+## Kicks + shoot duck setup (2026-10-24 ~12:40)
+
+- Kicks were only unbound (4b47953c emptied LB/RB defaults); kick_left/right ONNX unchanged in v8 (sha256 d6928284…,
+  147a32c3…). Branch microduck `kicks-on-main` (pushed): origin/main 942e58e3 + 57f294a7 (bumpers kick by default) +
+  e603c93f (play-emotions cherry-pick, one conflict in robotctl/src/configure.rs). 1735 tests pass. CI build
+  daemon-dev-kicks-on-main = **0.17.8-dev.1433.e603c93**, downloaded to ~/duck-sideload-kicks. The 9bcdc89 release is
+  gone from GitHub (rollback only via a robot's kept previous release).
+- Main on alpha (zero3, hw_rev 1): supported; needs `[bus] fast_sync_read = false`; v8 velstand drives faster, turns
+  slower; **idle glances and yawns open the beak** (glance_mouth 0.4, yawn_every_s 90) -> would drop the rope: set 0.0.
+  updater auto_apply default "mandatory" keeps a sideloaded build (check it is not "all").
+- `notes/shoot-setup/duck-shoot-setup <host>`: read-only report, install on Enter with motors off (settings backed up
+  *.bak-2026-10-24), tomlset.py for fast_sync_read/idle, 13 emotions + rope_tug, old voice seed (backup
+  sounds.bak-before-seed-<hostname>, `--revert-voice`), one robotd restart, checks. Not run yet: robot 3 unknown.
+
+## Robot 3 = cream-converse, set up (2026-10-24 ~14:50)
+
+BLE name cream-converse, serial <serial>, wlan MAC <mac>, <lan-ip> (`ssh cream-converse`), alpha
+(zero3), allow_dev_keys true. Rémi typed the Wi-Fi password in `notes/home-wifi/duck-wifi cream-converse`. Now on the kicks
+build, idle beak shut, 14 emotions, first duck's voice, pad y (top, X label) = rope_tug, x (left, Y label) = sad. Details in
+`notes/shoot-setup/setup.log`. Camera daemon fails on this duck since provisioning (no sensor probed), not ours.

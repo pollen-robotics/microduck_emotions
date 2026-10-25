@@ -2,17 +2,19 @@
 
 Brief: `/Users/remi/microduck/notes/emotion-wow/BRIEF.md` (Rémi by voice, 2026-10-10). Session microduck-fd.
 Options page: https://claude.ai/artifact/NP8Jdi7yG9TN2LXFsXx3Mz (republish from `page/index.html`, root = this folder).
+**2026-10-25: republished on Rémi's current Claude account as https://claude.ai/artifact/6zJiYtirjn1eoRHYJZsanu** (the old link
+belongs to his other account's organization). Republish the same `page/index.html` with root = this folder.
 
 ## The voice seed
 
-- **The previous duck (remi_duck, ssh microduck@192.168.1.29) had seed 4145077059.** It is the hash of its chip serial
+- **The previous duck (remi_duck, ssh microduck@<lan-ip>) had seed 4145077059.** It is the hash of its chip serial
   (`sounds::seed_from_id`, sha256 of `/proc/device-tree/serial-number`, first 8 hex digits). Evidence:
   `reachy-encounter/NOTES.md` 2026-09-02 ("this robot's seed is 4145077059"), the theater repo `microduck/README.md`
   ("The seed comes from the chip serial (this robot: 4145077059)"), and `emotions-workshop/quack.py`, whose port was checked
   sample-exact against that duck's real bank (alarm a-c, peck a-c). Ten other seeds were rendered on 2026-09-02 for
   auditioning (`reachy-encounter/voices/`); nothing in the notes or the transcripts shows Rémi picked one, so the old duck
   kept its own. All 14 emotion wavs (and the WOW sounds) are made with 4145077059.
-- graphite (serial cec2b3808a7238ff, if that is its device-tree serial) derives 72045712 by itself.
+- graphite (serial <serial>, if that is its device-tree serial) derives 72045712 by itself.
 - How the robot gets its voice: `sounds ensure-bank` (run by every release's postinstall) renders
   `/var/lib/robot/sounds/<tag>/*.wav` + a `.seed` marker `seed:bank_version`. `--seed N` overrides the hardware seed.
   robotd reads the wavs at play time (quacks switch at once) and caches the personality for the theremin/chorale from the
@@ -62,3 +64,44 @@ folders, no extra folders. Backup of graphite's own voice: `/var/lib/robot/sound
 marker 72045712:5); `apply-old-seed.sh --revert` puts it back. `sounds` printed the old duck's personality (237.9 Hz,
 quackiness 0.63). Nothing played, nothing moved. robotd was started at boot before the change, so quacks already use the old
 voice but the theremin/chorale personality follows at its next start (reboot or robotd restart; not done, it is Rémi's).
+
+## Episode 5 (2026-10-25): WOW on the duck (session microduck-8b)
+
+No pick was ever recorded, so the latest option, **low · big** (`wow_low_big__W1_swell`), is the default `wow`. Robot files
+in `robot/`: `wow.json` + `wow.wav` (low · big, 4.5 s), plus `wow_low` and `wow_low_half` (3.9 s) to try by command. The
+keyframes are the motion files with only the robotd fields kept, and the wavs are the W1 renders unchanged (sound
+from 0.83 s, aligned to the keyframes' t = 0). They're installed on cream-converse by `notes/shoot-setup/duck-ep5`, with
+pad Y (robot `x`) = wow.
+
+## Round 3 (2026-10-25): the sound, on the final motion (session microduck-8b)
+
+Rémi (voice via secretary-37): **the motion is final: low · big** ("super exaggerated, the best"). For the sound, W2 wobble is
+the best so far but "sounds too much like the duck is trying to be a ghost". He wants it to start lower, rise more and be more
+exaggerated, keeping the big O / small O shape. His idea: copy a real human "wow" in the klaxon voice, and make several options.
+
+- References, analysis only, never published. Seven Owen Wilson "wow" film clips (owen-wilson-wow-api) and the myinstants
+  cartoon "anime wow", which several sites host as one and the same clip. All noisy (music, crowds). The exaggerated ones
+  start low, rise 9-14 st, peak a little before halfway and fall 7-9 st; the drawled ones only fall. They were kept in the
+  session scratchpad, not in the repo.
+- The ghost diagnosis: W2's pure, breathy dark "oo" at both ends of a slow symmetric glide. The new timbres HORN_OO,
+  HORN_AA and KLAXON keep the buzz (quackiness, AM, nasal 2nd and 3rd harmonics) and drop the breath.
+- `wow.py --round3`: W2_wobble, W4_lower, W5_human, W6_klaxon, W7_big_o, W8_cartoon, each muxed onto the existing orbit
+  film `clips/wow_low_big__W1_swell.mp4`. No new simulation was needed: the beak follows `Arc.loud`, not the wav, and that
+  clip's audio is the wav from t = 0 (checked by cross-correlation: offset 0.0 s, correlation 1.0). Energy above 800 Hz is
+  54-71% for all of them, so they carry on the small speaker (rope_tug's was 5%). The pitch tracker confirms each designed
+  contour.
+- Robot files in `robot/`: `wow` = low · big + W2 (the Y placeholder until he picks), plus wow_lower, wow_human, wow_klaxon,
+  wow_big_o and wow_cartoon on the same keyframes. `duck-ep5` installs all of them. wow_low and wow_low_half were dropped
+  now that the motion is decided.
+- Page version 2 (same URL), new top section. Waiting for his pick; then replace `robot/wow.wav` and put it on the duck.
+
+## Round 4 (2026-10-25): W5 human, shorter
+
+Rémi: "the best one is the W5 human one, but the middle sound is too long, so we don't understand that's a wow. Make it shorter,
+a few variations. W8 cartoon is a great thing to keep, for comedic effects." The recipe is unchanged, only shorter (`wow.py --orbit
+--round4`, retimed sound start, peak and end). The beak follows the sound, so these were simulated again (1.7 GB peak RSS, no fall,
+0.2 cm drift, head keyframes identical to `wow`):
+W5a_short 1.6 s and W5b_shorter 1.2 s and W5c_quick 0.85 s all peak on the seen top (2.14 s); W5d_at_left is 1.2 s from the
+left start (0.82 s). Robot names: wow_short / wow_shorter / wow_quick / wow_at_left. `wow` (Y) = W5 human as it is, on the
+unchanged keyframes, until he picks. wow_cartoon = W8, kept, on no button. Removed from robot/: wow_lower, wow_klaxon,
+wow_big_o, wow_human. duck-ep5 now deletes wow_* files on the duck that are no longer in robot/. Page version 3.

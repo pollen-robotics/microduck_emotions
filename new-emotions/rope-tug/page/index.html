@@ -50,6 +50,9 @@ figcaption { display: grid; gap: 4px; min-width: 0; }
 .notes li { color: var(--muted); }
 .notes li strong { color: var(--fg); }
 code { font: 13.5px var(--mono); background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 0 4px; }
+ul.plain { margin: 0; padding-left: 20px; display: grid; gap: 8px; max-width: 74ch; }
+ul.plain li { color: var(--muted); }
+ul.plain li strong { color: var(--fg); }
 .tablewrap { overflow-x: auto; max-width: 100%; }
 table { border-collapse: collapse; font-size: 14.5px; font-variant-numeric: tabular-nums; min-width: 460px; }
 th, td { text-align: left; padding: 6px 14px 6px 0; border-bottom: 1px solid var(--line); }
@@ -101,6 +104,18 @@ td:first-child { font-weight: 700; }
   </section>
 
   <section>
+    <h2>Kicks, the shoot duck, branches</h2>
+    <ul class="plain">
+      <li><strong>Kicks were never removed.</strong> Your colleagues' change (4b47953c, "no kicks; policies pin to v8") only emptied the two bumper buttons. The kick brains are still in the new v8 set, byte for byte the ones you used. Main still supports your alpha board, as long as <code>fast_sync_read</code> stays off (graphite already needed that).</li>
+      <li><strong>My pick: current main, plus kicks, plus emotions.</strong> Branch <code>kicks-on-main</code>: main 0.17.8, the bumpers kick again, and your emotions-as-skills change (PR #384), which is not on main yet and the shoot needs. All 1735 tests pass, and the build is ready: <code>0.17.8-dev.1433.e603c93</code>. Rolling back to the version you tested is harder anyway: its build was deleted from GitHub.</li>
+      <li><strong>Different on main.</strong> It drives faster forward and turns slower (v8 walking brain). When idle it glances and yawns with the beak open, which would drop the rope: the setup switches that off. Kicks and emotions have not yet run on the v8 brain on a real duck.</li>
+      <li><strong>One command per duck:</strong> <code>notes/shoot-setup/duck-shoot-setup &lt;duck&gt;</code>. It reads the duck, installs on your Enter with the motors off, sets the rope-safe settings, puts the 13 emotions and rope_tug on it, then gives it the first duck's voice (last, because an install re-renders the duck's own voice). Nothing moves or plays. If needed, <code>sudo robotctl update rollback daemon</code> undoes the install.</li>
+      <li><strong>Robot 3's voice.</strong> Same seed as graphite (4145077059, the first duck's). I need to know which duck robot 3 is; none answers from here.</li>
+      <li><strong>Branches pushed</strong> (none to main, no PR): runtime <code>kicks-on-main</code> and <code>ground-pick-mouth</code>; emotions repo <code>robot-set</code> and <code>new-emotions</code> (WOW and rope tug); RL repo <code>ground-grasp</code>. <code>play-emotions</code> was already there. Not pushed, your call: the Arena campaign branches (secret), and older experiments (pad expressions, stomp, flamingo, tricks).</li>
+    </ul>
+  </section>
+
+  <section>
     <h2>Round 1 · Pick a motion</h2>
     <p>All three use the same small effort sound (E1). Each pull has a small wind-up the other way, a fast yank, a strained hold with a shiver, and a slower give-back, as if the rope pulled the head home. The pulls grow and the rhythm is uneven.</p>
     <div class="clips">
@@ -145,7 +160,6 @@ td:first-child { font-weight: 700; }
       <li><strong>Which side.</strong> The pulls go to the duck's own right, toward the film camera, so its face turns into the shot. Mirroring is a one-line change.</li>
       <li><strong>Real duck watch points.</strong> In simulation the duck stays put (under 1 cm of drift) even with the rope taut. On the real duck, rope tension may make it step; and the beak servo will be squeezing the rope the whole time you drive.</li>
       <li><strong>Next.</strong> Once you pick the staging, I make the robot file (same format as the 13 emotions, a 50 Hz timeline, with the grunts) and send it to the story session for its take. A real-duck test comes as a guided script, and nothing moves without your go.</li>
-      <li><strong>Also in progress.</strong> Kicks back on your duck (checking whether current main works on your alpha unit), your branches, and the old voice on robot 3: I asked the secretary which duck that is, since none answers from here.</li>
     </ul>
     <a class="talk" href="http://localhost:7788/focus/e3b086d8-19e9-4b6d-9861-61bccc764ef5" target="_blank" rel="noopener">Talk to the agent</a>
   </section>

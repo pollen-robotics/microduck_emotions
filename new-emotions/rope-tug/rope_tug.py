@@ -66,6 +66,7 @@ F.Duck._policy_tick = _policy_tick_robotd_layout
 LAG = 0.19                      # command -> seen head on the stand policy (WOW debug renders, 2026-10-10)
 ST = 2 ** (1 / 12)
 ROLL_MAX = 0.27                 # head_roll joint range
+YAW_MAX = 1.0                   # the head yaw command range the policies were trained on
 RIGHT, LEFT = -1, 1             # head_yaw sign: > 0 = the duck's own left. The film camera is on the duck's right.
 
 
@@ -159,7 +160,7 @@ class Tug:
         pitch = float(self.hp_k(t)) + life * smooth_noise(self.seed + 2, t, 0.02)
         z = float(self.z_k(t)) + life * smooth_noise(self.seed + 3, t, 0.0015, (0.8, 1.3, 1.9))
         bp = float(self.bp_k(t)) + life * smooth_noise(self.seed + 4, t, 0.012)
-        return dict(head_yaw=yaw, head_roll=max(-ROLL_MAX, min(ROLL_MAX, roll)), head_pitch=pitch,
+        return dict(head_yaw=max(-YAW_MAX, min(YAW_MAX, yaw)), head_roll=max(-ROLL_MAX, min(ROLL_MAX, roll)), head_pitch=pitch,
                     body_z=max(-0.025, min(0.010, z)), body_pitch=bp, mouth=0.0)
 
     def efforts(self):
